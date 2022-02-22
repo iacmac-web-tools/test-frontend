@@ -1,0 +1,70 @@
+<form class="form-center" [formGroup]="editResto" novalidate (ngSubmit)="collection()">
+    <div *ngIf="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Успешно</strong> Данные обновлены успешно
+        <button type="button" (click)="closeAlert()" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <!-- <div *ngIf="_autor.invalid && (_autor.touched || _autor.dirty)">
+        <span *ngIf="_autor.errors?.required">Field is required</span
+    >
+  </div> -->
+    <div class="row" formGroupName="mainAuthor">
+        <div class="col">
+            <label for="inputName">Имя</label>
+            <input type="text" class="form-control " placeholder="Имя" formControlName="firstName">
+        </div>
+        <div class="col">
+            <label for="inputSurName">Фамилия</label>
+            <input type="text" class="form-control" placeholder="Фамилия" formControlName="lastName">
+        </div>
+        <div class="col">
+            <label for="inputSurName">Отчество</label>
+            <input type="text" class="form-control" placeholder="Отчество" formControlName="middleName">
+        </div>
+        <div class="col">
+            <label for="inputEmail4">Контактный Email</label>
+            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" formControlName="contactEmail">
+        </div>
+    </div>
+    <div class="form-group" formGroupName="mainAuthor">
+        <label for="inputAddress">Место работы</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="" formControlName="workplace">
+    </div>
+    <div class="title">
+        <div class="row">
+            <h2 class="col">Другие авторы</h2>
+
+        </div>
+    </div>
+
+    <div class="another-autors" formGroupName="otherAuthors">
+        <div class="row">
+            <div class="col">
+                <label for="inputName">Имя</label>
+                <input type="text" class="form-control" placeholder="Имя" formControlName="firstName">
+            </div>
+            <div class="col">
+                <label for="inputSurName">Фамилия</label>
+                <input type="text" class="form-control" placeholder="Фамилия" formControlName="lastName">
+            </div>
+            <div class="col">
+                <label for="inputSurName">Отчество</label>
+                <input type="text" class="form-control" placeholder="Отчество" formControlName="middleName">
+            </div>
+
+        </div>
+    </div>
+    <h2 class="title">Тезисы</h2>
+    <div class="form-group">
+        <label for="inputTheme">Тема</label>
+        <input type="text" class="form-control" id="inputTheme" placeholder="" formControlName="topic">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Содержание</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="content"></textarea>
+    </div>
+    <div class="buttons-form">
+        <button type="submit" class="btn btn-primary col-2">Обновить</button>
+
+    </div>
+
+</form>

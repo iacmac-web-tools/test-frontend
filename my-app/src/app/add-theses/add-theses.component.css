@@ -1,0 +1,34 @@
+.form-center {
+    /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; */
+    margin-top: 30px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    margin-top: 30px;
+}
+
+.another-autors {
+    margin-top: 30px;
+}
+
+.another-autors .row {
+    margin-top: 20px;
+}
+
+.btn-danger {
+    margin-left: 5px;
+}
+
+.buttons-form {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.btn-light {
+    margin-left: 25px;
+}
