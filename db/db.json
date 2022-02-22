@@ -1,0 +1,98 @@
+{
+  "theses": [
+    {
+      "mainAuthor": {
+        "firstName": "Сидор",
+        "lastName": "Сидоров",
+        "middleName": "Сидорович",
+        "workplace": "ООО \"Рога и Копыта\"",
+        "contactEmail": "sidorov@mail.ru"
+      },
+      "otherAuthors": {
+        "firstName": null,
+        "lastName": null,
+        "middleName": null
+      },
+      "topic": "Тезис 3",
+      "content": "Бла-бла-бла-быр",
+      "id": 1
+    },
+    {
+      "mainAuthor": {
+        "firstName": "Иван",
+        "lastName": "Поддубный",
+        "middleName": "Алексеевич"
+      },
+      "content": "Я сделал добавление!!!!",
+      "id": 2
+    },
+    {
+      "mainAuthor": {
+        "firstName": "Иван",
+        "lastName": "Поддубный",
+        "middleName": "Алексеевич",
+        "workplace": "ООО \"Рога и Копыта\"",
+        "contactEmail": "gameworld300@yandex.ru"
+      },
+      "otherAuthors": {
+        "firstName": "Оксана",
+        "lastName": "Мохнач",
+        "middleName": "Александровна"
+      },
+      "topic": "Как жить здорово",
+      "content": "12345",
+      "id": 3
+    },
+    {
+      "mainAuthor": {
+        "firstName": "Ольга",
+        "lastName": "Киреева",
+        "middleName": "Владимировна",
+        "workplace": "ОАО \"За гранью\"",
+        "contactEmail": "uob76@yandex.ru"
+      },
+      "otherAuthors": {
+        "firstName": "Алина",
+        "lastName": "Загитова",
+        "middleName": "Елесеевна"
+      },
+      "topic": "Новые методы",
+      "content": "старые работы",
+      "id": 4
+    },
+    {
+      "mainAuthor": {
+        "firstName": "Валентина",
+        "lastName": "Удовыдченкова",
+        "middleName": "Васильевна",
+        "workplace": "МУТП",
+        "contactEmail": "uob76@yandex.ru"
+      },
+      "otherAuthors": {
+        "firstName": "Сидор",
+        "lastName": "Сидоров",
+        "middleName": "Сидорович"
+      },
+      "topic": "Разработка и содержание",
+      "content": "Текст",
+      "id": 5
+    },
+    {
+      "mainAuthor": {
+        "firstName": "Андрей",
+        "lastName": "Фамильнов",
+        "middleName": "Исакиевич",
+        "workplace": "ИП Андрей",
+        "contactEmail": "sidorov@mail.ru"
+      },
+      "otherAuthors": {
+        "firstName": "",
+        "lastName": "",
+        "middleName": ""
+      },
+      "topic": "Экономика Москвы",
+      "content": "1-2-3-4-5-6-7-8-9",
+      "id": 6
+    }
+  ]
+}

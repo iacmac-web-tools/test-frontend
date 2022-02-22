@@ -1,0 +1,25 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">отчество</th>
+            <th scope="col">Тезис</th>
+            <th>Операции</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of collection">
+            <th>{{item.id}}</th>
+            <td>{{item.mainAuthor.firstName}}</td>
+            <td>{{item.mainAuthor.lastName}}</td>
+            <td>{{item.mainAuthor.middleName}}</td>
+            <td>{{item.content}}</td>
+            <td><a href="" (click)="deleteTheses(item.id)">удалить</a></td>
+            <td><a routerLink="/update/{{item.id}}">Просмотреть</a></td>
+
+        </tr>
+
+    </tbody>
+</table>
