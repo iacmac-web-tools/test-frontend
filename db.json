@@ -1,0 +1,112 @@
+{
+  "theses": [
+    {
+      "id": 1,
+      "mainAuthor": {
+        "firstName": "Hue",
+        "lastName": "Jackman",
+        "middleName": "Wong",
+        "workplace": "string"
+      },
+      "contactEmail": "user@example.com",
+      "otherAuthors": [
+        {
+          "firstName": "string",
+          "lastName": "string",
+          "middleName": "string",
+          "workplace": "string"
+        }
+      ],
+      "topic": "string",
+      "content": "string",
+      "created": "2022-02-08T09:35:50.2249116Z",
+      "updated": "2022-02-14T19:21:12.0075602Z"
+    },
+    {
+      "id": 2,
+      "mainAuthor": {
+        "firstName": "Сидор",
+        "lastName": "Сидоров",
+        "middleName": "Сидорович",
+        "workplace": "Организация 3"
+      },
+      "contactEmail": "sidorov@example.com",
+      "otherAuthors": [],
+      "topic": "Тезис 3",
+      "content": "Бла-бла-бла",
+      "created": "2022-02-08T09:36:01.5817133Z",
+      "updated": "2022-02-08T09:36:01.5820846Z"
+    },
+    {
+      "id": 3,
+      "mainAuthor": {
+        "firstName": "Петр",
+        "lastName": "Петров",
+        "middleName": "Петрович",
+        "workplace": "Организация 2"
+      },
+      "contactEmail": "petrov@example.com",
+      "otherAuthors": [],
+      "topic": "Тезис 2",
+      "content": "Бла-бла-бла",
+      "created": "2022-02-08T09:36:06.1213099Z",
+      "updated": "2022-02-08T09:36:06.1213357Z"
+    },
+    {
+      "id": 4,
+      "mainAuthor": {
+        "firstName": "Иван",
+        "lastName": "Иванов",
+        "middleName": "Иванович",
+        "workplace": "Организация 1"
+      },
+      "contactEmail": "ivanov@example.com",
+      "otherAuthors": [],
+      "topic": "Тезис 1",
+      "content": "Бла-бла-бла",
+      "created": "2022-02-08T09:36:11.1514756Z",
+      "updated": "2022-02-08T09:36:11.1515041Z"
+    },
+    {
+      "id": 5,
+      "mainAuthor": {
+        "firstName": "string",
+        "lastName": "string",
+        "middleName": "string",
+        "workplace": "string"
+      },
+      "contactEmail": "user@example.com",
+      "otherAuthors": [
+        {
+          "firstName": "string",
+          "lastName": "string",
+          "middleName": "string",
+          "workplace": "string"
+        }
+      ],
+      "topic": "string",
+      "content": "string",
+      "created": "2022-02-14T19:19:10.3026299Z",
+      "updated": "2022-02-14T19:19:10.30269Z"
+    },
+    {
+      "mainAuthor": {
+        "lastName": "Пронин",
+        "firstName": "Виталий",
+        "middleName": "Александрович",
+        "workPlace": "WorkPLACEEEEEE"
+      },
+      "contactEmail": "ascascsac@mail.ru",
+      "otherAuthors": [
+        {
+          "lastName": "Ivanov",
+          "firstName": "Alex",
+          "middleName": "Sergeevich"
+        }
+      ],
+      "topic": "While all in house",
+      "content": "intresting TV",
+      "id": 6
+    }
+  ]
+}

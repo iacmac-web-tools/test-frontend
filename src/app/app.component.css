@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.my-font {
+  font-weight: 500;
+  font-size: small;
+  min-height: 150px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.content {
+  flex: 1 0 auto;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* .example-container {
+  width: 400px;
+  height: 200px;
+  margin: 12px;
+  border: 1px solid #555;
+} */
+
+mat-drawer-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #eeeeee;
+}
+
+
+mat-drawer {
+  width: 350px;
+  background-color: #e0e0e0;
+}
+
+.my-menu {
+  background-color: #198754;
+  color: white;
+}
+
+.top-buffer {
+  margin-top: 10%;
+}
