@@ -1,0 +1,43 @@
+<div class="container" >
+  <div class="row" *ngIf="isError; else nextIF" >
+    <div class="col">
+      <span class="alert alert-danger text-center">{{ myError }}</span>
+    </div>
+  </div>
+</div>
+
+<ng-template #nextIF>
+  <div *ngIf="thesesArray.length != 0 && thesesArray.length != null; then HereTheses else NoneTheses"></div>
+</ng-template>
+
+<ng-template #NoneTheses><p class="alert alert-warning text-center">Тезисов нет в БД. Добавь их.</p></ng-template>
+
+<ng-template #HereTheses>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">Форма тезиса</th>
+        <th scope="col" class="text-center">Дата<br>создания</th>
+        <th scope="col" class="text-center">Дата<br>обновления</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let theses of thesesArray; let num = index">
+        <th scope="row" class="align-middle">{{ num + 1 }}</th>
+        <td>
+          <div class="card" style="margin: 1%; padding-top: 5px; background-color: #fff9e9;">
+            <app-item-table-expansion
+              [theses]="theses"
+            >
+            </app-item-table-expansion>
+          </div>
+        </td>
+        <td class="align-middle">{{ theses.created != null ? (theses.created | date:'d MMM, y') : 'None' }}</td>
+        <td class="align-middle">{{ theses.updated != null ? (theses.created | date:'d MMM, y') : 'None' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</ng-template>

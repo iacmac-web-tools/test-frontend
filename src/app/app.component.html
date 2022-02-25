@@ -1,0 +1,55 @@
+<mat-drawer-container class="wrapper" >
+  <!-- Выпадающее боковое меню -->
+  <mat-drawer #drawer [opened]="true" mode="side">
+    <div class="container-md top-buffer">
+
+      <ul class="nav flex-column row gy">
+        <li class="nav-item">
+          <a
+            class="container-fluid btn btn-outline-success"
+            routerLink=""
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            Добавить тезис
+        </a>
+        </li>
+        <br>
+        <li class="nav-item">
+          <a
+            class="container-fluid btn btn-outline-success"
+            routerLink="/list-theses"
+            routerLinkActive="active"
+          >
+            Список тезисов
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </mat-drawer>
+
+
+  <mat-drawer-content class="content">
+
+    <!-- MENU (HEADER) -->
+    <mat-toolbar class="my-menu">
+      <button mat-icon-button class="example-icon" (click)="drawer.toggle()" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>frontTaskTheses</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
+
+    <br>
+
+    <div class="container-fluid">
+      <mat-card class="my-font">
+        <router-outlet></router-outlet>
+      </mat-card>
+    </div>
+  </mat-drawer-content>
+<!-- СЮДА НЕЛЬЗЯ! -->
+</mat-drawer-container>
+
+<!-- СЮДА НЕЛЬЗЯ! -->

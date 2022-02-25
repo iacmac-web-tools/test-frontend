@@ -1,0 +1,14 @@
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-column-created {
+  border-right: 1px solid silver;
+  border-left: 1px solid silver;
+}

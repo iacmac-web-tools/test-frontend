@@ -1,0 +1,151 @@
+<div class="example-action-buttons">
+  <div class="row">
+
+    <div *ngIf="isOpenBtnActive; then open else close"></div>
+
+    <ng-template #open>
+      <button class="my-btn col-1" mat-mini-fab color="primary" (click)="accordion.openAll(); isOpenBtnActive = false;">
+        <mat-icon>expand_more</mat-icon>
+      </button>
+    </ng-template>
+
+    <ng-template #close>
+      <button class="my-btn col-1" mat-mini-fab color="primary" (click)="accordion.closeAll(); isOpenBtnActive = true;">
+        <mat-icon>expand_less</mat-icon>
+      </button>
+    </ng-template>
+
+    <div *ngIf="isChangeBtnActive; then change else save"></div>
+
+    <ng-template #change >
+      <button
+        class="my-btn col-1"
+        style="width: 105px;"
+        mat-raised-button
+        (click)="isChangeBtnActive = false; accordion.openAll()"
+      >
+        Изменить
+      </button>
+    </ng-template>
+
+    <ng-template #save >
+      <button
+        class="my-btn col-1"
+        style="width: 105px;"
+        (click)="isChangeBtnActive = true; accordion.closeAll(); saveNewDataTheses(theses)"
+        mat-raised-button
+      >
+        Сохранить
+      </button>
+    </ng-template>
+
+  </div>
+  <div class="container" *ngIf="isError">
+    <p class="alert alert-danger">{{ myError }}</p>
+  </div>
+</div>
+<!-- (click)="deleteTheses(theses.id)" -->
+
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span>Автор: <u>{{ theses.mainAuthor.lastName }}</u></span>
+      </mat-panel-title>
+      <mat-panel-description>
+        ФИО, E-mail, место работы
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <span>Автор</span>
+      <div class="container">
+        <div class="row">
+
+          <mat-form-field appearance="fill" class="col" >
+            <mat-label>Фамилия</mat-label>
+            <input matInput [(ngModel)]="theses.mainAuthor.lastName" [readonly]="isChangeBtnActive" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Имя</mat-label>
+            <input matInput [(ngModel)]="theses.mainAuthor.firstName" [readonly]="isChangeBtnActive" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Отчество</mat-label>
+            <input matInput [(ngModel)]="theses.mainAuthor.middleName" [readonly]="isChangeBtnActive" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Контактный e-mail</mat-label>
+            <input matInput [(ngModel)]="theses.contactEmail" [readonly]="isChangeBtnActive" required>
+          </mat-form-field>
+
+        </div>
+
+        <div class="row">
+          <mat-form-field appearance="fill" class="col" >
+            <mat-label>Место работы</mat-label>
+            <input matInput [(ngModel)]="theses.mainAuthor.workPlace" [readonly]="isChangeBtnActive" >
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <div *ngIf="theses.otherAuthors?.length !== null; then blockOtherAuthors"></div>
+      <ng-template #blockOtherAuthors >
+        <hr>
+        <span>Другие<br>авторы</span>
+        <div class="container">
+          <div class="row" *ngFor="let another of theses.otherAuthors">
+
+            <mat-form-field appearance="fill" class="col">
+              <mat-label>Фамилия</mat-label>
+              <input matInput [(ngModel)]="another.lastName" [readonly]="isChangeBtnActive" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col">
+              <mat-label>Имя</mat-label>
+              <input matInput [(ngModel)]="another.firstName" [readonly]="isChangeBtnActive" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col">
+              <mat-label>Отчество</mat-label>
+              <input matInput [(ngModel)]="another.middleName" [readonly]="isChangeBtnActive" required>
+            </mat-form-field>
+
+          </div>
+        </div>
+      </ng-template>
+
+  </mat-expansion-panel>
+
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span>Тезис: <u>{{ theses.topic }}</u></span>
+      </mat-panel-title>
+      <mat-panel-description>
+        Тема, Содержание
+        <mat-icon>note</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="container">
+      <div class="row">
+        <mat-form-field appearance="fill" class="col">
+          <mat-label>Тема</mat-label>
+          <input matInput [(ngModel)]="theses.topic" [readonly]="isChangeBtnActive" required>
+        </mat-form-field>
+        <hr style="visibility: hidden;">
+        <mat-form-field appearance="fill" class="col">
+          <mat-label>Содержание</mat-label>
+          <textarea matInput [(ngModel)]="theses.content" [readonly]="isChangeBtnActive" ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>

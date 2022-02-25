@@ -1,0 +1,135 @@
+<h1 class="text-center text-uppercase font-weight-normal">Добавление тезиса</h1><hr>
+
+<div class="row" *ngIf="isError" class="alert alert-danger text-center" >
+  <div class="col">
+    <span>{{ myError }}</span>
+  </div>
+</div>
+
+<mat-stepper orientation="vertical"  #stepper>
+
+  <mat-step [stepControl]="authorDataFG">
+
+    <form [formGroup]="authorDataFG" >
+      <ng-template matStepLabel>Данные об авторе (авторах)</ng-template>
+
+      <span>Автор</span>
+      <div class="container">
+        <div class="row">
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Фамилия</mat-label>
+            <input matInput placeholder="Last name" formControlName="lastNameCtrl" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Имя</mat-label>
+            <input matInput placeholder="First name" formControlName="firstNameCtrl" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Отчество</mat-label>
+            <input matInput placeholder="Middle name" formControlName="middleNameCtrl" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Контактный e-mail</mat-label>
+            <input matInput placeholder="E-mail address" formControlName="emailCtrl" required>
+          </mat-form-field>
+
+        </div>
+
+        <div class="row">
+          <mat-form-field appearance="fill" class="col" >
+            <mat-label>Место работы</mat-label>
+            <input matInput placeholder="Work place" formControlName="workPlaceCtrl" required>
+          </mat-form-field>
+        </div>
+
+      </div>
+      <hr>
+      <div class="container">
+        <div class="row">
+          <p class="col-10">Другие авторы</p>
+          <a class="col" mat-stroked-button color="primary" (click)="addAnotherAuther()">Добавить</a>
+        </div>
+      </div>
+      <fieldset formArrayName="anotherAuthersFullNameFG">
+        <div class="container card" style="margin-top: 20px; background-color: #f7f7f7;" *ngFor="let anoterAuthor of getFormsAnotherAuthers().controls; let idx = index">
+
+          <form [formGroupName]="idx" class="row align-items-center">
+            <mat-form-field appearance="fill" class="col">
+              <mat-label>Фамилия</mat-label>
+              <input matInput placeholder="Last name" formControlName="lastName" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col">
+              <mat-label>Имя</mat-label>
+              <input matInput placeholder="First name" formControlName="firstName" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col">
+              <mat-label>Отчество</mat-label>
+              <input matInput placeholder="Middle name" formControlName="middleName" required>
+            </mat-form-field>
+
+          <a class="col-2" mat-stroked-button color="warn" (click)="removeAnotherAuther(idx)">Удалить</a>
+
+          </form>
+
+        </div>
+      </fieldset>
+      <hr>
+
+      <div>
+        <!-- mat-button  -->
+        <button mat-stroked-button color="primary" matStepperNext>Далее</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="thesesDataFG">
+    <form [formGroup]="thesesDataFG">
+      <ng-template matStepLabel>Информация о тезисе</ng-template>
+
+      <div class="container">
+        <div class="row">
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Тема</mat-label>
+            <input matInput formControlName="themeThesesCtrl" placeholder="theme" required>
+          </mat-form-field>
+          <hr style="visibility: hidden;">
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Содержание</mat-label>
+            <textarea matInput formControlName="contentThesesCtrl" placeholder="Content" required style="height: 200px;"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div>
+        <button [ngStyle]="{'margin-right': '10px'}" mat-stroked-button color="warn" matStepperPrevious>Назад</button>
+        <button mat-stroked-button color="primary" matStepperNext>Далее</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Готово</ng-template>
+    <div *ngIf="authorDataFG.invalid || thesesDataFG.invalid; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock ><p style="color: red;">Необходимо заполнить всю форму, чтобы отправить данные на сервер!</p></ng-template>
+    <ng-template #elseBlock ><p style="color: green;">Вы заполнили информацию о тезисе. Отправляем данные на сервер?</p></ng-template>
+    <hr>
+    <div>
+      <button [ngStyle]="{'margin-right': '10px'}" mat-stroked-button color="warn" matStepperPrevious>Назад</button>
+      <a mat-stroked-button color="primary" (click)="onSubmit(); stepper.reset();"
+        [disabled]="authorDataFG.invalid || thesesDataFG.invalid"
+      >
+        Очистить форму и отправить данные
+      </a>
+      <!-- <input mat-stroked-button color="primary" (click)="stepper.reset(); onSubmit(myForm)" type="submit" value="Очистить форму и отправить данные"> -->
+    </div>
+  </mat-step>
+
+</mat-stepper>
