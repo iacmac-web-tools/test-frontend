@@ -1,0 +1,26 @@
+<section>
+  <div>
+    <label for="lastName">Фамилия</label>
+    <input id="lastName" type="text" name="lastName" maxlength="255" required>
+  </div>
+  <div>
+    <label for="firstName">Имя</label>
+    <input id="firstName" type="text" name="firstName" maxlength="255" required>
+  </div>
+  <div>
+    <label for="middleName">Отчество</label>
+    <input id="middleName" type="text" name="middleName" maxlength="255">
+  </div>
+  <div *ngIf="!visibility">
+    <label for="contactEmail">Контактный email</label>
+    <input id="contactEmail" type="text" name="contactEmail" required>
+  </div>
+  <input *ngIf="visibility" class="delButton disabled" type="button" name="delButton" value="Удалить">
+</section>
+
+<section *ngIf="!visibility">
+  <div>
+    <label for="workplace">Место работы</label>
+    <input  id="workplace" type="text" name="workplace" maxlength="500" required>
+  </div>
+</section>

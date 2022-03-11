@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="container">
+
+    <form>
+
+      <h2>Автор</h2>
+
+      <app-person-resource-form></app-person-resource-form>
+
+      <div class="inline">
+        <h2>Другие авторы</h2>
+        <input class="addButton disabled" type="button" name="addButton" value="Добавить">
+      </div>
+
+      <app-person-resource-form [visibility]="visibilityBlock"></app-person-resource-form>
+      
+      <app-person-resource-form [visibility]="visibilityBlock"></app-person-resource-form>
+
+      <h2>Тезис</h2>
+
+      <div>
+        <label for="topic">Тема</label>
+        <input id="topic" type="text" name="topic" maxlength="500" required>
+      </div>
+
+      <div>
+        <label for="content">Содержание</label>
+        <textarea id="content" name="content" maxlength="5000" required></textarea>
+      </div>
+
+      <div class="buttons">
+        <input class="submit disabled" type="submit" name="submit" value="Отправить">
+        <input class="reset" type="reset" name="reset" value="Очистить форму">
+      </div>
+
+    </form>
+    
+  <div>
+<div>

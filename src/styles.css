@@ -1,0 +1,211 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*ОБНУЛЕНИЕ-----------*/
+*,*::before,*::after{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav, footer, header, aside{display: block;}
+html,body{
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul, ol, li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
+/*--------------------*/
+
+h1 {
+  font-weight: 700;
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+
+.wrapper {
+  max-width: 800px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container {
+  border: 1px solid #000;
+  padding: 30px 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+nav a {
+  width: 160px;
+  height: 40px;
+  display: block;
+  background: blue;
+  opacity: 0.7;
+  border: 1px solid #000;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  padding-top: 10px;
+}
+
+nav a:first-child {
+  margin-right: 40px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+table th {
+  border: 1px solid #000;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 28px;
+}
+
+table td {
+  border: 1px solid #000;
+  text-align: center;
+  font-size: 14px;
+  line-height: 28px;
+}
+
+button {
+  width: 160px;
+  height: 40px;
+  display: block;
+  background: blue;
+  opacity: 0.7;
+  border: 1px solid #000;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+section, .inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+label {
+  display: block;
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+#topic {
+  width: 760px;
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+#content {
+  width: 760px;
+  height: 90px;
+  resize: none;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 160px;
+  height: 40px;
+  display: block;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+.addButton {
+  width: 120px;
+  background: blue;
+  opacity: 0.7;
+  font-size: 18px;
+  color: #fff;
+}
+
+.delButton {
+  width: 120px;
+  background: red;
+  opacity: 0.7;
+  font-size: 18px;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.buttonsMain {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonsMain button:first-child {
+  margin-right: 40px;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 25px;
+}
+
+.buttons button:first-child {
+  margin-right: 40px;
+}
+
+.submit {
+  background: blue;
+  opacity: 0.7;
+  font-size: 18px;
+  color: #fff;
+  margin-right: 40px;
+  margin-bottom: 0;
+}
+
+.reset {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+#workplace, textarea {
+  width: 760px;
+  height: 40px;
+}
