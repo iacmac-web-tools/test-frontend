@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <div class="container">
+
+    <button (click)="allThesises()">Получить полный список тезисов</button>
+
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Автор</th>
+        <th>Контактный email</th>
+        <th>Тема</th>
+        <th>Создан</th>
+        <th>Изменен</th>
+      </tr>
+      <tr *ngFor="let item of response">
+        <td>{{item.id}}</td>
+        <td>{{item.mainAuthor}}</td>
+        <td>{{item.contactEmail}}</td>
+        <td>{{item.topic}}</td>
+        <td>{{item.created | date :'dd.MM.yyyy HH:mm'}}</td>
+        <td>{{item.updated | date :'dd.MM.yyyy HH:mm'}}</td>
+      </tr>
+    </table>
+
+    <div>
+      <label for="id">id:</label>
+      <input id="id" type="text" [(ngModel)]="id" required>
+      <button (click)="search()">Просмотр тезиса</button>
+    </div>
+
+    <div *ngIf="responseID">
+      <p>Автор: {{responseID.mainAuthor.lastName}} {{responseID.mainAuthor.firstName}} {{responseID.mainAuthor.middleName}}</p>
+      <p>Место работы: {{responseID.mainAuthor.workplace}}</p>
+      <p>Контактный email: {{responseID.contactEmail}}</p>
+      <p>Другие авторы:</p>
+      <div *ngFor="let item of responseID.otherAuthors">
+        ФИО: {{item.lastName}} {{item.firstName}} {{item.middleName}}, Место работы: {{item.workplace}}
+      </div>
+      <p>Тема: {{responseID.topic}}</p>
+      <p>Содержание: {{responseID.content}}</p>
+      <p>Создан: {{responseID.created | date :'dd.MM.yyyy HH:mm'}}</p>
+      <p>Изменен: {{responseID.updated | date :'dd.MM.yyyy HH:mm'}}</p>
+      <!-- <div class="buttons">
+        <button>Изменить тезис</button>
+        <button>Удалить тезис</button>
+      </div> -->
+    </div>
+    
+  <div>
+<div>
