@@ -1,6 +1,13 @@
 <header>
   <mat-toolbar color="primary">
-    <span>My Application</span>
+    <a class="link" mat-flat-button routerLink="">
+      <mat-icon>home</mat-icon>
+      Главная
+    </a>
+    <a class="link" mat-flat-button routerLink="/addTheses">
+      <mat-icon>add</mat-icon>
+      Добавить тезис
+    </a>
   </mat-toolbar>
 </header>
 <router-outlet></router-outlet>

@@ -1,0 +1,20 @@
+@import '../../../styles/colors.scss';
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  color: $color-text-light;
+
+  background-color: $color-filled-dark;
+}
+
+.root {
+  text-align: center;
+}
+
+.link {
+  color: $color-text-primary;
+}
