@@ -1,0 +1,107 @@
+<form [formGroup]="tesisForm">
+    <div class="d-flex justify-content-center text-white">
+        <div class="form-group h-50 w-50">
+            <h3 class="mr-auto">Автор</h3>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text bg-secondary text-white" id="">ФИО</span>
+                </div>
+                <input type="text" class="form-control" formControlName="autorName">
+                <input type="text" class="form-control" formControlName="autorSurname">
+                <input type="text" class="form-control" formControlName="autorPatronymic">
+            </div>
+            <div class="input-group mb-3 mt-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text bg-secondary text-white" id="inputGroup-sizing-default">Контактный Email</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" formControlName="autorEmail">
+            </div>
+            <div class="input-group mb-3 mt-3">
+                <div class="input-group-prepend">
+                <span class="input-group-text bg-secondary text-white" id="inputGroup-sizing-default">Место работы</span>
+                </div>
+                <input  formControlName="autorWork" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="d-flex">
+                <div class="d-flex justify-content-start w-75"><h3>Другие авторы</h3></div> 
+                <div class="d-flex justify-content-end w-25">
+                    <button type="button" class="btn btn-info mt-2 w-100" (click)="addCo_autors()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                        </svg>
+                        Добавить</button>
+                </div>
+            </div>
+            <div class="d-flex" *ngIf="co_autors[0]">
+                <div class="input-group  mb-3 mt-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text bg-secondary text-white" id="">ФИО</span>
+                    </div>
+                    <input formControlName="co_auto1Name" type="text" class="form-control">
+                    <input formControlName="co_auto1Surname" type="text" class="form-control">
+                    <input formControlName="co_auto1Patronymic" type="text" class="form-control">
+                    <button class="btn btn-outline-info bg-danger text-black" type="button" (click)="deleteCo_autors(0)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" >
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                    </svg></button>
+            </div>  
+            </div>
+            <div class="d-flex" *ngIf="co_autors[1]">
+                <div class="input-group  mb-3 mt-1">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text bg-secondary text-white" id="">ФИО</span>
+                    </div>
+                    <input formControlName="co_auto2Name" type="text" class="form-control">
+                    <input formControlName="co_auto2Surname" type="text" class="form-control">
+                    <input formControlName="co_auto2Patronymic" type="text" class="form-control">
+                    <button class="btn btn-outline-info bg-danger text-black" type="button" (click)="deleteCo_autors(1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" >
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                    </svg></button>
+            </div>  
+            </div>
+            <div class="d-flex" *ngIf="co_autors[2]">
+                <div class="input-group  mb-3 mt-1">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text bg-secondary text-white" id="">ФИО</span>
+                    </div>
+                    <input formControlName="co_auto3Name" type="text" class="form-control">
+                    <input formControlName="co_auto3Surname" type="text" class="form-control">
+                    <input formControlName="co_auto3Patronymic" type="text" class="form-control">
+                    <button class="btn btn-outline-info bg-danger text-black" type="button" (click)="deleteCo_autors(2)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" >
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                    </svg></button>
+            </div>  
+            </div>
+            <h3 class="mr-auto">Тезис</h3>
+            <div class="input-group mb-3 mt-3">
+                <div class="input-group-prepend">
+
+                <span class="input-group-text bg-secondary text-white" id="inputGroup-sizing-default">Тема</span>
+                </div>
+                <input formControlName="tesisHead" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"/>
+            </div>
+            <h6>Содержание</h6>
+            <textarea  formControlName="tesisBody" class="form-control h-75" id="exampleFormControlTextarea1" rows="7" style="height:100%;"></textarea>
+            <div class="d-flex justify-content-center mt-1 ">
+                <button [disabled]="tesisForm.invalid" (click)="submitTesis()"  type="button" class="btn btn-info pl-25 mt-2 w-25 ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                    Добавить тезис</button>  
+                        <div style="width: 1em;"></div>
+                    <button (click)="clearForm()" type="button" class="btn btn-info mt-2 w-25">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                        Очистить</button>   
+                        </div>
+        </div>
+    </div>
+</form>
