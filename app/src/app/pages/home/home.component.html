@@ -1,1 +1,23 @@
-<h1>Home</h1>
+<main class="root">
+  <div *ngIf="isLoading" class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error.message" class="error">
+    <h1>404 Ошибка</h1>
+    <h2>УПС! Что-то пошло не так...</h2>
+    <h3>Попробуйте обновить страницу или зайти попозже.</h3>
+  </div>
+
+  <h1 *ngIf="!isLoading && !theses.length && !error.message" class="notTheses">Пусто!</h1>
+
+  <mat-nav-list *ngIf="!isLoading && theses.length && !error.message">
+    <a mat-list-item *ngFor="let thesis of theses; let i = index" href={{thesis.id}}>
+      <span matListItemTitle>{{i + 1}}. Тема: {{thesis.topic}}</span>
+      <span matListItemLine>Автор: {{thesis.mainAuthor}}</span>
+      <span matListItemLine>Почта: {{thesis.contactEmail}}</span>
+      <span matListItemLine>Дата создания: {{thesis.created | date: 'd/M/yy, H:mm'}}</span>
+      <span matListItemLine>Дата обновления: {{thesis.updated | date: 'd/M/yy, H:mm'}}</span>
+    </a>
+  </mat-nav-list>
+</main>
