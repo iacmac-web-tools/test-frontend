@@ -10,6 +10,7 @@ import {HomeComponent} from './home/home.component';
 import {CreateThesisComponent} from './create-thesis/create-thesis.component';
 import {ThesesComponent} from './theses/theses.component';
 import {ThesisDetailComponent} from './thesis-details/thesis-detail.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,6 +33,7 @@ const routes: Routes = [
     DataModule,
     NgbModule,
     RouterModule.forRoot(routes),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
