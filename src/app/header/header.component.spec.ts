@@ -17,7 +17,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create-thesis', () => {
+  it('should edit-thesis', () => {
     expect(component).toBeTruthy();
   });
 });

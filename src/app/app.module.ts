@@ -7,10 +7,11 @@ import {DataModule} from "../data/data.module";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from './home/home.component';
-import {CreateThesisComponent} from './create-thesis/create-thesis.component';
+import {EditThesisComponent} from './edit-thesis/edit-thesis.component';
 import {ThesesComponent} from './theses/theses.component';
 import {ThesisDetailComponent} from './thesis-details/thesis-detail.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { CreateThesisComponent } from './create-thesis/create-thesis.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,9 +25,10 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    CreateThesisComponent,
+    EditThesisComponent,
     ThesesComponent,
     ThesisDetailComponent,
+    CreateThesisComponent,
   ],
   imports: [
     BrowserModule,

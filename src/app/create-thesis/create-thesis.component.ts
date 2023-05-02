@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormControl, FormGroup} from "@angular/forms";
+import {Person} from "../../domain/models/person.model";
 import {CreateUseCase} from "../../domain/usecases/create.usecase";
 import {Router} from "@angular/router";
-import {Person} from "../../domain/models/person.model";
 
 @Component({
   selector: 'app-create-thesis',
@@ -10,36 +10,33 @@ import {Person} from "../../domain/models/person.model";
   styleUrls: ['./create-thesis.component.scss']
 })
 export class CreateThesisComponent {
-  ThesisForm = new FormGroup({
-    firstName: new FormControl("", Validators.required),
-    middleName: new FormControl(),
-    lastName: new FormControl("", Validators.required),
-    contactEmail: new FormControl("", Validators.email),
-    workplace: new FormControl("", Validators.required),
-    topic: new FormControl("", [Validators.required, Validators.maxLength(500)]),
-    content: new FormControl("", [Validators.required, Validators.maxLength(5000)]),
-    otherAuthors: new FormArray([
-      new FormGroup({
-        firstName: new FormControl("", Validators.required),
-        middleName: new FormControl(""),
-        lastName: new FormControl("", Validators.required),
-        workplace: new FormControl("", Validators.required),
-      })
-    ])
-  });
 
   constructor(private create: CreateUseCase, private router: Router) {}
 
-  submit(): void {
+  submit($event: FormGroup<{
+    firstName: FormControl<string | null>;
+    lastName: FormControl<string | null>;
+    contactEmail: FormControl<string | null>;
+    topic: FormControl<string | null>;
+    middleName: FormControl<any>;
+    otherAuthors: FormArray<FormGroup<{
+      firstName: FormControl<string | null>;
+      lastName: FormControl<string | null>;
+      middleName: FormControl<string | null>;
+      workplace: FormControl<string | null>
+    }>>;
+    workplace: FormControl<string | null>;
+    content: FormControl<string | null>
+  }>): void {
     const params = {
       mainAuthor: {
-        firstName: this.ThesisForm.controls.firstName.value || "",
-        middleName: this.ThesisForm.controls.middleName.value || "",
-        lastName: this.ThesisForm.controls.lastName.value || "",
-        workplace: this.ThesisForm.controls.workplace.value || ""
+        firstName: $event.controls.firstName.value || "",
+        middleName: $event.controls.middleName.value || "",
+        lastName: $event.controls.lastName.value || "",
+        workplace: $event.controls.workplace.value || ""
       },
-      contactEmail: this.ThesisForm.controls.contactEmail.value || "",
-      otherAuthors: this.ThesisForm.controls.otherAuthors.value.map(x => {
+      contactEmail: $event.controls.contactEmail.value || "",
+      otherAuthors: $event.controls.otherAuthors.value.map(x => {
         return {
           firstName: x.firstName,
           middleName: x.middleName,
@@ -47,28 +44,9 @@ export class CreateThesisComponent {
           workplace: x.workplace || "test"
         }
       }) as Array<Person>,
-      topic: this.ThesisForm.controls.topic.value || "",
-      content: this.ThesisForm.controls.content.value || "",
+      topic: $event.controls.topic.value || "",
+      content: $event.controls.content.value || "",
     };
-    console.log(params);
     this.create.execute(params).subscribe(value => this.router.navigate([`/thesis/${value.id}`]));
-  }
-
-  addAuthor(): void {
-    let group = new FormGroup({
-      firstName: new FormControl("", Validators.required),
-      middleName: new FormControl(""),
-      lastName: new FormControl("", Validators.required),
-      workplace: new FormControl("", Validators.required),
-    });
-    this.ThesisForm.controls.otherAuthors.push(group);
-  }
-
-  removeElement(id: number): void {
-    this.ThesisForm.controls.otherAuthors.removeAt(id);
-  }
-
-  resetForm(): void {
-    this.ThesisForm.reset();
   }
 }
