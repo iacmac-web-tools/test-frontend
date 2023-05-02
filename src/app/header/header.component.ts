@@ -9,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class HeaderComponent {
   links = [
-    {title: 'Просмотр', fragment: "view-theses"},
+    {title: 'Просмотр', fragment: "theses"},
     {title: 'Создание', fragment: "create"},
   ]
   constructor(public route: ActivatedRoute) {}

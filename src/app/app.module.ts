@@ -8,12 +8,14 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from './home/home.component';
 import {CreateThesisComponent} from './create-thesis/create-thesis.component';
-import {ViewThesesComponent} from './view-theses/view-theses.component';
+import {ThesesComponent} from './theses/theses.component';
+import {ThesisDetailComponent} from './theses-details/thesis-detail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'create', component: CreateThesisComponent},
-  {path: 'view-theses', component: ViewThesesComponent}
+  {path: 'theses', component: ThesesComponent},
+  {path: 'thesis/:id', component: ThesisDetailComponent}
 ]
 
 @NgModule({
@@ -22,7 +24,8 @@ const routes: Routes = [
     HeaderComponent,
     HomeComponent,
     CreateThesisComponent,
-    ViewThesesComponent,
+    ThesesComponent,
+    ThesisDetailComponent,
   ],
   imports: [
     BrowserModule,

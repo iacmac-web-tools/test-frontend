@@ -1,0 +1,12 @@
+<div class="container">
+  <article class="mt-3" *ngFor="let thesis of theses">
+    <q class="fs-4">
+      <a class="text-decoration-none text-black" routerLink="/thesis/{{thesis.id}}"><span
+        class="thesis-topic">{{thesis.topic}}</span></a>
+    </q>
+    <cite class="d-block">{{thesis.mainAuthor}} -
+      <a href="mailto:{{thesis.contactEmail}}">{{thesis.contactEmail}}</a>
+    </cite>
+    <hr/>
+  </article>
+</div>

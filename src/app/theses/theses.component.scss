@@ -1,2 +1,8 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap/scss/variables";
+
+.thesis-topic {
+  &:hover {
+    color: map-get($theme-colors, "primary");
+  }
+}
