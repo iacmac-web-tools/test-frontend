@@ -5,7 +5,11 @@ import {Person} from "../../../domain/models/person.model";
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {ThesisShort} from "../../../domain/models/thesis-short.model";
+import {Injectable} from "@angular/core";
 
+@Injectable({
+  providedIn: "root"
+})
 export class ThesisWebRepository extends ThesisRepository {
   private readonly baseUrl = environment.apiUrl;
   private readonly API_ROUTES = {

@@ -8,6 +8,7 @@ import {GetUseCase} from "../domain/usecases/get.usecase";
 import {UpdateUseCase} from "../domain/usecases/update.usecase";
 import {DeleteUseCase} from "../domain/usecases/delete.usecase";
 import {CreateUseCase} from "../domain/usecases/create.usecase";
+import {ThesisWebRepository} from "./repositories/thesis/thesis-web.repository";
 
 const getAllUseCaseFactory = (thesisRepository: ThesisRepository) => new GetAllUseCase(thesisRepository);
 export const getAllUseCaseProvider = {
@@ -45,7 +46,17 @@ export const deleteUseCaseProvider = {
 }
 
 @NgModule({
-  providers: [],
+  providers: [
+    createUseCaseProvider,
+    getUseCaseProvider,
+    getAllUseCaseProvider,
+    updateUseCaseProvider,
+    deleteUseCaseProvider,
+    {
+      provide: ThesisRepository,
+      useClass: ThesisWebRepository
+    }
+  ],
   imports: [
     CommonModule,
     HttpClientModule
