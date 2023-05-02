@@ -8,7 +8,11 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor() {}
+  links = [
+    {title: 'Просмотр', fragment: "view-theses"},
+    {title: 'Создание', fragment: "create"},
+  ]
+  constructor(public route: ActivatedRoute) {}
 
   readonly environment = environment;
   public isCollapsed = true;
