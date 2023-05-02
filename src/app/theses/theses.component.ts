@@ -8,7 +8,8 @@ import {ThesisShort} from "../../domain/models/thesis-short.model";
   styleUrls: ['./theses.component.scss']
 })
 export class ThesesComponent implements OnInit {
-  theses? : Array<ThesisShort>;
+  theses?: Array<ThesisShort>;
+
   constructor(private getAll: GetAllUseCase) {}
 
   ngOnInit(): void {

@@ -9,7 +9,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from './home/home.component';
 import {CreateThesisComponent} from './create-thesis/create-thesis.component';
 import {ThesesComponent} from './theses/theses.component';
-import {ThesisDetailComponent} from './theses-details/thesis-detail.component';
+import {ThesisDetailComponent} from './thesis-details/thesis-detail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
