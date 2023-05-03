@@ -11,14 +11,16 @@ import {EditThesisComponent} from './edit-thesis/edit-thesis.component';
 import {ThesesComponent} from './theses/theses.component';
 import {ThesisDetailComponent} from './thesis-details/thesis-detail.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { CreateThesisComponent } from './create-thesis/create-thesis.component';
-import { FieldErrorComponent } from './field-error/field-error.component';
+import {CreateThesisComponent} from './create-thesis/create-thesis.component';
+import {FieldErrorComponent} from './field-error/field-error.component';
+import {UpdateThesisComponent} from './update-thesis/update-thesis.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'create', component: CreateThesisComponent},
   {path: 'theses', component: ThesesComponent},
-  {path: 'thesis/:id', component: ThesisDetailComponent}
+  {path: 'thesis/:id', component: ThesisDetailComponent},
+  {path: 'thesis/edit/:id', component: UpdateThesisComponent}
 ]
 
 @NgModule({
@@ -31,6 +33,7 @@ const routes: Routes = [
     ThesisDetailComponent,
     CreateThesisComponent,
     FieldErrorComponent,
+    UpdateThesisComponent,
   ],
   imports: [
     BrowserModule,

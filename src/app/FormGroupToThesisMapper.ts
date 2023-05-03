@@ -17,7 +17,7 @@ export class FormGroupToThesisMapper extends Mapper<FormGroup<{
   }>>,
   workplace: FormControl<string | null>,
   content: FormControl<string | null>
-}>, Thesis>{
+}>, Thesis> {
   mapFrom(param: FormGroup<{
     firstName: FormControl<string | null>,
     lastName: FormControl<string | null>,
@@ -56,22 +56,24 @@ export class FormGroupToThesisMapper extends Mapper<FormGroup<{
   }
 
   mapTo(param: Thesis): FormGroup {
+    const formGroups = param.otherAuthors?.map(person => {
+      return new FormGroup({
+        firstName: new FormControl(person.firstName, Validators.required),
+        middleName: new FormControl(person.middleName),
+        lastName: new FormControl(person.lastName, Validators.required),
+        workplace: new FormControl(person.workplace, Validators.required),
+      })
+    })
+    const formArray = new FormArray(formGroups ?? []);
     return new FormGroup({
-      firstName: new FormControl("", Validators.required),
-      middleName: new FormControl(),
-      lastName: new FormControl("", Validators.required),
-      contactEmail: new FormControl("", [Validators.required, Validators.email]),
-      workplace: new FormControl("", Validators.required),
-      topic: new FormControl("", [Validators.required, Validators.maxLength(500)]),
-      content: new FormControl("", [Validators.required, Validators.maxLength(5000)]),
-      otherAuthors: new FormArray([
-        new FormGroup({
-          firstName: new FormControl("", Validators.required),
-          middleName: new FormControl(""),
-          lastName: new FormControl("", Validators.required),
-          workplace: new FormControl("Test workplace", Validators.required),
-        })
-      ])
+      firstName: new FormControl(param.mainAuthor?.firstName, Validators.required),
+      middleName: new FormControl(param.mainAuthor?.middleName),
+      lastName: new FormControl(param.mainAuthor?.lastName, Validators.required),
+      contactEmail: new FormControl(param.contactEmail, [Validators.required, Validators.email]),
+      workplace: new FormControl(param.mainAuthor?.workplace, Validators.required),
+      topic: new FormControl(param.topic, [Validators.required, Validators.maxLength(500)]),
+      content: new FormControl(param.content, [Validators.required, Validators.maxLength(5000)]),
+      otherAuthors: formArray
     });
   }
 }

@@ -35,4 +35,9 @@ export class ThesisDetailComponent implements OnInit {
     this.deleteUseCase.execute({id: this.id}).subscribe(_ =>
       this.router.navigate(["/theses"]))
   }
+
+  updateThesis() {
+    if (this.id === undefined) return;
+    this.router.navigate([`/thesis/edit/${this.id}`]);
+  }
 }

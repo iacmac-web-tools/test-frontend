@@ -23,7 +23,7 @@ export abstract class ThesisRepository {
     otherAuthors: Array<Person>,
     topic: string,
     content: string
-  }): Observable<Thesis>
+  }): Observable<ThesisEntity>
 
   abstract delete(params: { id: number }): Observable<void>;
 }

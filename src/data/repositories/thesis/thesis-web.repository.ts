@@ -55,8 +55,8 @@ export class ThesisWebRepository extends ThesisRepository {
     otherAuthors: Array<Person>;
     topic: string;
     content: string
-  }): Observable<Thesis> {
+  }): Observable<ThesisEntity> {
     const {id: _, ...updateParams} = params;
-    return this.http.put<Thesis>(this.API_ROUTES.update(params.id), updateParams);
+    return this.http.put<ThesisEntity>(this.API_ROUTES.update(params.id), updateParams);
   }
 }
