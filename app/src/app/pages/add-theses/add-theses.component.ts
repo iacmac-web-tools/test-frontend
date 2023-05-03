@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ThesisService } from 'src/app/thesis.service';
-import { IAuthor, IOutputThesis } from 'src/types/thesis';
+import { IAuthor } from 'src/types/thesis';
 
 @Component({
   selector: 'app-add-theses',
@@ -19,7 +20,7 @@ export class AddThesesComponent implements OnInit {
     message: ''
   };
 
-  constructor(private formBuilder: FormBuilder, private thesisService: ThesisService) { }
+  constructor(private _snackBar: MatSnackBar, private formBuilder: FormBuilder, private thesisService: ThesisService) { }
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({
@@ -75,14 +76,16 @@ export class AddThesesComponent implements OnInit {
     }
     
     this.thesisService.addThesis(pipeFormValue).subscribe({
-      next: (data: IOutputThesis) => {
+      next: () => {
         this.ngForm?.resetForm();
+        this._snackBar.open('Добавлено!', 'close');
       },
       error: (data) => {
         this.error = {
           status: data.error.status,
           message: (Object.values(data.error.errors)[0] as string[])[0],
         };
+        this._snackBar.open(`${this.error.status} ${this.error.message}`, 'close');
       },
     });
   }

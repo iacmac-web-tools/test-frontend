@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThesisService} from '../../thesis.service';
 import {IBriefThesis} from '../../../types/thesis';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
     message: ''
   };
   
-  constructor(private thesisService: ThesisService){ }
+  constructor(private _snackBar: MatSnackBar, private thesisService: ThesisService){ }
     
   ngOnInit(){
     this.thesisService.getThesesAll().subscribe({
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
           message: (Object.values(data.error.errors)[0] as string[])[0],
         };
         this.isLoading = false;
+        this._snackBar.open(`${this.error.status} ${this.error.message}`, 'close');
       },
     });
   }

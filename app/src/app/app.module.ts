@@ -18,6 +18,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatProgressSpinnerModule,
     MatInputModule,
     MatFormFieldModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSnackBarModule
   ],
   providers: [ThesisService],
   bootstrap: [AppComponent]

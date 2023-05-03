@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ThesisService } from 'src/app/thesis.service';
 import { IOutputThesis } from 'src/types/thesis';
@@ -33,7 +34,7 @@ export class DetailThesisComponent implements OnInit {
   };
 
 
-  constructor(private formBuilder: FormBuilder, private activateRoute: ActivatedRoute, private router: Router, private thesisService: ThesisService) {
+  constructor(private _snackBar: MatSnackBar, private formBuilder: FormBuilder, private activateRoute: ActivatedRoute, private router: Router, private thesisService: ThesisService) {
     this.id = activateRoute.snapshot.params['id'];
   }
 
@@ -61,12 +62,8 @@ export class DetailThesisComponent implements OnInit {
         });
         this.isLoading = false;
       },
-      error: (data) => {
-        this.error = {
-          status: data.error.status,
-          message: (Object.values(data.error.errors)[0] as string[])[0],
-        };
-        this.isLoading = false;
+      error: () => {
+        this.router.navigate(['notFound']); 
       },
     });
   }
@@ -105,6 +102,7 @@ export class DetailThesisComponent implements OnInit {
           status: data.error.status,
           message: (Object.values(data.error.errors)[0] as string[])[0],
         };
+        this._snackBar.open(`${this.error.status} ${this.error.message}`, 'close');
       },
     });
   }
@@ -119,6 +117,7 @@ export class DetailThesisComponent implements OnInit {
           status: data.error.status,
           message: (Object.values(data.error.errors)[0] as string[])[0],
         };
+        this._snackBar.open(`${this.error.status} ${this.error.message}`, 'close');
       },
     });
   }
