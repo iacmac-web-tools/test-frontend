@@ -5,212 +5,242 @@
 
   <div *ngIf="!isLoading && !this.isEdited">
     <mat-grid-list cols="4" rowHeight="90px" gutterSize="20px">
-      <mat-grid-tile colspan=4 rowspan=1>
+      <mat-grid-tile colspan="4" rowspan="1">
         <h2 class="title">Автор</h2>
       </mat-grid-tile>
-  
-      <mat-grid-tile colspan=1 rowspan=1>
+
+      <mat-grid-tile colspan="1" rowspan="1">
         <div class="texts">
           <p class="subtitle">Фамилия:</p>
-          <p>{{this.thesis.mainAuthor.firstName}}</p>
+          <p>{{ this.thesis.mainAuthor.firstName }}</p>
         </div>
       </mat-grid-tile>
-      <mat-grid-tile colspan=1 rowspan=1>
+      <mat-grid-tile colspan="1" rowspan="1">
         <div class="texts">
           <p class="subtitle">Имя:</p>
-          <p>{{this.thesis.mainAuthor.middleName}}</p>
+          <p>{{ this.thesis.mainAuthor.middleName }}</p>
         </div>
       </mat-grid-tile>
-      <mat-grid-tile colspan=1 rowspan=1>
+      <mat-grid-tile colspan="1" rowspan="1">
         <div class="texts">
           <p class="subtitle">Отечество:</p>
-          <p>{{this.thesis.mainAuthor.lastName}}</p>
+          <p>{{ this.thesis.mainAuthor.lastName }}</p>
         </div>
       </mat-grid-tile>
-      <mat-grid-tile colspan=1 rowspan=1>
+      <mat-grid-tile colspan="1" rowspan="1">
         <div class="texts">
           <p class="subtitle">Контактный email:</p>
-          <p>{{this.thesis.contactEmail}}</p>
+          <p>{{ this.thesis.contactEmail }}</p>
         </div>
       </mat-grid-tile>
-      
-      <mat-grid-tile colspan=1 rowspan=1>
+
+      <mat-grid-tile colspan="1" rowspan="1">
         <div class="texts">
           <p class="subtitle">Место работы</p>
-          <p>{{this.thesis.mainAuthor.workplace}}</p>
+          <p>{{ this.thesis.mainAuthor.workplace }}</p>
         </div>
       </mat-grid-tile>
-      
+
       <div *ngIf="this.thesis.otherAuthors.length">
-        <mat-grid-tile colspan=4 rowspan=1>
+        <mat-grid-tile colspan="4" rowspan="1">
           <h2 class="title">Другие авторы</h2>
         </mat-grid-tile>
-        <div *ngFor="let otherAuthor of this.thesis.otherAuthors;">
-          <mat-grid-tile colspan=1 rowspan=1>
+        <div *ngFor="let otherAuthor of this.thesis.otherAuthors">
+          <mat-grid-tile colspan="1" rowspan="1">
             <div class="texts">
               <p class="subtitle">Фамилия:</p>
-              <p>{{otherAuthor!.firstName}}</p>
+              <p>{{ otherAuthor!.firstName }}</p>
             </div>
           </mat-grid-tile>
-          <mat-grid-tile colspan=1 rowspan=1>
+          <mat-grid-tile colspan="1" rowspan="1">
             <div class="texts">
               <p class="subtitle">Имя:</p>
-              <p>{{otherAuthor!.middleName}}</p>
+              <p>{{ otherAuthor!.middleName }}</p>
             </div>
           </mat-grid-tile>
-          <mat-grid-tile colspan=1 rowspan=1>
+          <mat-grid-tile colspan="1" rowspan="1">
             <div class="texts">
               <p class="subtitle">Отечество:</p>
-              <p>{{otherAuthor!.lastName}}</p>
+              <p>{{ otherAuthor!.lastName }}</p>
             </div>
           </mat-grid-tile>
-          <mat-grid-tile colspan=1 rowspan=1>
+          <mat-grid-tile colspan="1" rowspan="1">
             <div class="texts">
               <p class="subtitle">Место работы:</p>
-              <p>{{otherAuthor!.workplace}}</p>
+              <p>{{ otherAuthor!.workplace }}</p>
             </div>
           </mat-grid-tile>
         </div>
       </div>
-  
-      <mat-grid-tile colspan=4 rowspan=1>
+
+      <mat-grid-tile colspan="4" rowspan="1">
         <h2 class="title">Тезис</h2>
       </mat-grid-tile>
-  
-      <mat-grid-tile colspan=4 rowspan=1>
+
+      <mat-grid-tile colspan="4" rowspan="1">
         <div class="texts">
           <p class="subtitle">Тема:</p>
-          <p>{{this.thesis.topic}}</p>
+          <p>{{ this.thesis.topic }}</p>
         </div>
       </mat-grid-tile>
     </mat-grid-list>
-    
+
     <div class="texts">
       <p class="subtitle">Содержание:</p>
-      <p>{{this.thesis.content}}</p>
+      <p>{{ this.thesis.content }}</p>
     </div>
-  
+
     <div class="buttons">
-      <button mat-raised-button color="primary" type="button" (click)="editThesis()">Редактировать</button>
-      <button mat-raised-button color="warn" type="button" (click)="delThesis()">Удалить</button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="editThesis()">
+        Редактировать
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="delThesis()">
+        Удалить
+      </button>
     </div>
   </div>
-  
+
   <div *ngIf="!isLoading && this.isEdited">
-    <form class="form" [formGroup]="formGroup" (ngSubmit)="saveEditThesis(formGroup)">
+    <form
+      class="form"
+      [formGroup]="formGroup"
+      (ngSubmit)="saveEditThesis(formGroup)">
       <mat-grid-list cols="4" rowHeight="110px" gutterSize="20px">
-        <mat-grid-tile colspan=4 rowspan=1>
+        <mat-grid-tile colspan="4" rowspan="1">
           <h2 class="title">Автор</h2>
         </mat-grid-tile>
-  
-        <mat-grid-tile colspan=1 rowspan=1>
+
+        <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field appearance="outline">
             <mat-label>Фамилия</mat-label>
-            <input matInput formControlName="firstName">
-            <mat-error *ngIf="formGroup.controls['firstName'].hasError('required')">
+            <input matInput formControlName="firstName" />
+            <mat-error
+              *ngIf="formGroup.controls['firstName'].hasError('required')">
               Пожалуйста, заполните это поле
             </mat-error>
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile colspan=1 rowspan=1>
+        <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field appearance="outline">
             <mat-label>Имя</mat-label>
-            <input matInput formControlName="middleName">
-            <mat-error *ngIf="formGroup.controls['middleName'].hasError('required')">
+            <input matInput formControlName="middleName" />
+            <mat-error
+              *ngIf="formGroup.controls['middleName'].hasError('required')">
               Пожалуйста, заполните это поле
             </mat-error>
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile colspan=1 rowspan=1>
+        <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field appearance="outline">
             <mat-label>Отечество</mat-label>
-            <input matInput formControlName="lastName">
-            <mat-error *ngIf="formGroup.controls['lastName'].hasError('required')">
+            <input matInput formControlName="lastName" />
+            <mat-error
+              *ngIf="formGroup.controls['lastName'].hasError('required')">
               Пожалуйста, заполните это поле
             </mat-error>
           </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile colspan=1 rowspan=1>
+        <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field appearance="outline">
             <mat-label>Контактный email</mat-label>
-            <input matInput formControlName="contactEmail">
-            <mat-error *ngIf="formGroup.controls['contactEmail'].hasError('email') && !formGroup.controls['contactEmail'].hasError('required')">
+            <input matInput formControlName="contactEmail" />
+            <mat-error
+              *ngIf="
+                formGroup.controls['contactEmail'].hasError('email') &&
+                !formGroup.controls['contactEmail'].hasError('required')
+              ">
               Пожалуйста, введите корректный адрес электронной почты
             </mat-error>
-            <mat-error *ngIf="formGroup.controls['contactEmail'].hasError('required')">
+            <mat-error
+              *ngIf="formGroup.controls['contactEmail'].hasError('required')">
               Пожалуйста, заполните это поле
             </mat-error>
           </mat-form-field>
         </mat-grid-tile>
-  
-        <mat-grid-tile colspan=4 rowspan=1>
+
+        <mat-grid-tile colspan="4" rowspan="1">
           <mat-form-field appearance="outline">
             <mat-label>Место работы</mat-label>
-            <input matInput formControlName="workplace">
-            <mat-error *ngIf="formGroup.controls['workplace'].hasError('required')">
+            <input matInput formControlName="workplace" />
+            <mat-error
+              *ngIf="formGroup.controls['workplace'].hasError('required')">
               Пожалуйста, заполните это поле
             </mat-error>
           </mat-form-field>
         </mat-grid-tile>
-  
-        <mat-grid-tile colspan=4 rowspan=1>
+
+        <mat-grid-tile colspan="4" rowspan="1">
           <h2 class="title">Другие авторы</h2>
         </mat-grid-tile>
-  
-        <div *ngFor="let otherAuthor of otherAuthors; let i = index" formArrayName="otherAuthors">
-          <mat-grid-tile colspan=1 rowspan=1>
-            <mat-form-field appearance="outline" formGroupName={{i}}>
+
+        <div
+          *ngFor="let otherAuthor of otherAuthors; let i = index"
+          formArrayName="otherAuthors">
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="outline" formGroupName="{{ i }}">
               <mat-label>Фамилия</mat-label>
-              <input matInput formControlName="firstName">
-              <mat-error *ngIf="otherAuthor.controls['firstName'].hasError('required')">
+              <input matInput formControlName="firstName" />
+              <mat-error
+                *ngIf="otherAuthor.controls['firstName'].hasError('required')">
                 Пожалуйста, заполните это поле
               </mat-error>
             </mat-form-field>
           </mat-grid-tile>
-          <mat-grid-tile colspan=1 rowspan=1>
-            <mat-form-field appearance="outline" formGroupName={{i}}>
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="outline" formGroupName="{{ i }}">
               <mat-label>Имя</mat-label>
-              <input matInput formControlName="middleName">
-              <mat-error *ngIf="otherAuthor.controls['middleName'].hasError('required')">
+              <input matInput formControlName="middleName" />
+              <mat-error
+                *ngIf="otherAuthor.controls['middleName'].hasError('required')">
                 Пожалуйста, заполните это поле
               </mat-error>
             </mat-form-field>
           </mat-grid-tile>
-          <mat-grid-tile colspan=1 rowspan=1>
-            <mat-form-field appearance="outline" formGroupName={{i}}>
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="outline" formGroupName="{{ i }}">
               <mat-label>Отечество</mat-label>
-              <input matInput formControlName="lastName">
-              <mat-error *ngIf="otherAuthor.controls['lastName'].hasError('required')">
+              <input matInput formControlName="lastName" />
+              <mat-error
+                *ngIf="otherAuthor.controls['lastName'].hasError('required')">
                 Пожалуйста, заполните это поле
               </mat-error>
             </mat-form-field>
           </mat-grid-tile>
-          <mat-grid-tile colspan=1 rowspan=1>
-            <mat-form-field appearance="outline" formGroupName={{i}}>
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field appearance="outline" formGroupName="{{ i }}">
               <mat-label>Место работы</mat-label>
-              <input matInput formControlName="workplace">
-              <mat-error *ngIf="otherAuthor.controls['workplace'].hasError('required')">
+              <input matInput formControlName="workplace" />
+              <mat-error
+                *ngIf="otherAuthor.controls['workplace'].hasError('required')">
                 Пожалуйста, заполните это поле
               </mat-error>
             </mat-form-field>
           </mat-grid-tile>
         </div>
-  
-        <mat-grid-tile colspan=4 rowspan=1>
+
+        <mat-grid-tile colspan="4" rowspan="1">
           <h2 class="title">Тезис</h2>
         </mat-grid-tile>
-  
-        <mat-grid-tile colspan=4 rowspan=1>
+
+        <mat-grid-tile colspan="4" rowspan="1">
           <mat-form-field appearance="outline">
             <mat-label>Тема</mat-label>
-            <input matInput formControlName="topic">
+            <input matInput formControlName="topic" />
             <mat-error *ngIf="formGroup.controls['topic'].hasError('required')">
               Пожалуйста, заполните это поле
             </mat-error>
           </mat-form-field>
         </mat-grid-tile>
       </mat-grid-list>
-  
+
       <mat-form-field appearance="outline">
         <mat-label>Содержание</mat-label>
         <textarea matInput formControlName="content" rows="5"></textarea>
@@ -218,10 +248,21 @@
           Пожалуйста, заполните это поле
         </mat-error>
       </mat-form-field>
-  
+
       <div class="buttons">
-        <button mat-raised-button color="primary" [disabled]="formGroup.invalid">Сохранить</button>
-        <button mat-raised-button color="warn" type="button" (click)="cancelEditThesis()">Отмена</button>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="formGroup.invalid">
+          Сохранить
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          type="button"
+          (click)="cancelEditThesis()">
+          Отмена
+        </button>
       </div>
     </form>
   </div>

@@ -20,9 +20,9 @@ export interface IOutputThesis {
     middleName: string;
     lastName: string;
     workplace: string;
-  }
+  };
   contactEmail: string;
-  otherAuthors: Partial<IAuthor[]>
+  otherAuthors: Partial<IAuthor[]>;
   topic: string;
   content: string;
 }

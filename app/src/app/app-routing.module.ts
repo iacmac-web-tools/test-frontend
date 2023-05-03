@@ -6,15 +6,15 @@ import { DetailThesisComponent } from './pages/detail-thesis/detail-thesis.compo
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'addTheses', component: AddThesesComponent},
+  { path: '', component: HomeComponent },
+  { path: 'addTheses', component: AddThesesComponent },
   { path: 'notFound', component: NotFoundComponent },
-  { path: ':id', component: DetailThesisComponent},
-  { path: '**', component: NotFoundComponent }
+  { path: ':id', component: DetailThesisComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
