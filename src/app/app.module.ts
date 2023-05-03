@@ -12,6 +12,7 @@ import {ThesesComponent} from './theses/theses.component';
 import {ThesisDetailComponent} from './thesis-details/thesis-detail.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { CreateThesisComponent } from './create-thesis/create-thesis.component';
+import { FieldErrorComponent } from './field-error/field-error.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
     ThesesComponent,
     ThesisDetailComponent,
     CreateThesisComponent,
+    FieldErrorComponent,
   ],
   imports: [
     BrowserModule,

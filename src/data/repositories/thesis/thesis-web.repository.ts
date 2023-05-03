@@ -6,6 +6,7 @@ import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {ThesisShort} from "../../../domain/models/thesis-short.model";
 import {Injectable} from "@angular/core";
+import {ThesisEntity} from "./entities/thesis-entity";
 
 @Injectable({
   providedIn: "root"
@@ -31,16 +32,16 @@ export class ThesisWebRepository extends ThesisRepository {
     otherAuthors: Array<Person>;
     topic: string;
     content: string
-  }): Observable<Thesis> {
-    return this.http.post<Thesis>(this.API_ROUTES.create(), params);
+  }): Observable<ThesisEntity> {
+    return this.http.post<ThesisEntity>(this.API_ROUTES.create(), params);
   }
 
   delete(params: { id: number }): Observable<void> {
     return this.http.delete<void>(this.API_ROUTES.delete(params.id));
   }
 
-  get(params: { id: number }): Observable<Thesis> {
-    return this.http.get<Thesis>(this.API_ROUTES.get(params.id));
+  get(params: { id: number }): Observable<ThesisEntity> {
+    return this.http.get<ThesisEntity>(this.API_ROUTES.get(params.id));
   }
 
   getAll(): Observable<Array<ThesisShort>> {

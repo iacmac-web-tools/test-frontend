@@ -3,6 +3,7 @@ import {Person} from "../models/person.model";
 import {Observable} from "rxjs";
 import {ThesisRepository} from "../repositories/thesis.repository";
 import {Thesis} from "../models/thesis.model";
+import {ThesisEntity} from "../../data/repositories/thesis/entities/thesis-entity";
 
 export class CreateUseCase implements UseCase<{
   mainAuthor: Person,
@@ -10,7 +11,7 @@ export class CreateUseCase implements UseCase<{
   otherAuthors: Array<Person>,
   topic: string,
   content: string
-}, Thesis> {
+}, ThesisEntity> {
   constructor(private readonly thesisRepository: ThesisRepository) {}
 
   execute(params: {
@@ -19,7 +20,7 @@ export class CreateUseCase implements UseCase<{
     otherAuthors: Array<Person>;
     topic: string;
     content: string
-  }): Observable<Thesis> {
+  }): Observable<ThesisEntity> {
     return this.thesisRepository.create(params);
   }
 }

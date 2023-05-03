@@ -4,6 +4,7 @@ import {Thesis} from "../../domain/models/thesis.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Person} from "../../domain/models/person.model";
 import {DeleteUseCase} from "../../domain/usecases/delete.usecase";
+import {ThesisEntity} from "../../data/repositories/thesis/entities/thesis-entity";
 
 @Component({
   selector: 'app-thesis-details',
@@ -11,7 +12,7 @@ import {DeleteUseCase} from "../../domain/usecases/delete.usecase";
   styleUrls: ['./thesis-detail.component.scss']
 })
 export class ThesisDetailComponent implements OnInit {
-  thesis?: Thesis
+  thesis?: ThesisEntity
   id?: number
 
   constructor(private route: ActivatedRoute,
