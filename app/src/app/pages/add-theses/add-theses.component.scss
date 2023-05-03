@@ -1,0 +1,27 @@
+.root {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title,
+.mat-mdc-form-field {
+  width: 99.9%;
+}
+
+.button {
+  width: 99.9%;
+  text-align: end;
+
+  & .mdc-button {
+    width: 100px;
+  }
+}
+
+.buttons {
+  display: flex;
+
+  & .mdc-button:not(:last-child) {
+    margin-right: 20px;
+  }
+}

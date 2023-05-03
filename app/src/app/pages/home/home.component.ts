@@ -10,8 +10,8 @@ import {IBriefThesis} from '../../../types/thesis';
 export class HomeComponent implements OnInit {
   theses: IBriefThesis[] = []; 
   isLoading = true;
-  error: Error = {
-    name: '',
+  error = {
+    status: '',
     message: ''
   };
   
@@ -23,10 +23,10 @@ export class HomeComponent implements OnInit {
         this.theses = data;
         this.isLoading = false;
       },
-      error: (err: Error) => {
+      error: (data) => {
         this.error = {
-          name: err.name,
-          message: err.message,
+          status: data.error.status,
+          message: (Object.values(data.error.errors)[0] as string[])[0],
         };
         this.isLoading = false;
       },

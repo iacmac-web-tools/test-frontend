@@ -6,3 +6,22 @@ export interface IBriefThesis {
   created: Date;
   updated: Date;
 }
+
+export interface IAuthor {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+}
+
+export interface IOutputThesis {
+  mainAuthor: {
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    workplace: string;
+  }
+  contactEmail: string;
+  otherAuthors: Partial<IAuthor[]>
+  topic: string;
+  content: string;
+}
