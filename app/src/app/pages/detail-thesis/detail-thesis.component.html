@@ -1,0 +1,81 @@
+<main class="root">
+  <mat-grid-list cols="4" rowHeight="90px" gutterSize="20px">
+    <mat-grid-tile colspan=4 rowspan=1>
+      <h2 class="title">Автор</h2>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan=1 rowspan=1>
+      <div class="texts">
+        <p class="subtitle">Фамилия:</p>
+        <p>{{this.thesis.mainAuthor.firstName}}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=1 rowspan=1>
+      <div class="texts">
+        <p class="subtitle">Имя:</p>
+        <p>{{this.thesis.mainAuthor.middleName}}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=1 rowspan=1>
+      <div class="texts">
+        <p class="subtitle">Отечество:</p>
+        <p>{{this.thesis.mainAuthor.lastName}}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=1 rowspan=1>
+      <div class="texts">
+        <p class="subtitle">Контактный email:</p>
+        <p>{{this.thesis.contactEmail}}</p>
+      </div>
+    </mat-grid-tile>
+    
+    <mat-grid-tile colspan=1 rowspan=1>
+      <div class="texts">
+        <p class="subtitle">Место работы</p>
+        <p>{{this.thesis.mainAuthor.workplace}}</p>
+      </div>
+    </mat-grid-tile>
+    
+    <div *ngIf="this.thesis.otherAuthors.length">
+      <mat-grid-tile colspan=4 rowspan=1>
+        <h2 class="title">Другие авторы</h2>
+      </mat-grid-tile>
+      <div *ngFor="let otherAuthor of this.thesis.otherAuthors;">
+        <mat-grid-tile colspan=1 rowspan=1>
+          <div class="texts">
+            <p class="subtitle">Фамилия:</p>
+            <p>{{otherAuthor!.firstName}}</p>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan=1 rowspan=1>
+          <div class="texts">
+            <p class="subtitle">Имя:</p>
+            <p>{{otherAuthor!.middleName}}</p>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan=2 rowspan=1>
+          <div class="texts">
+            <p class="subtitle">Отечество:</p>
+            <p>{{otherAuthor!.lastName}}</p>
+          </div>
+        </mat-grid-tile>
+      </div>
+    </div>
+
+    <mat-grid-tile colspan=4 rowspan=1>
+      <h2 class="title">Тезис</h2>
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan=4 rowspan=1>
+      <div class="texts">
+        <p class="subtitle">Тема:</p>
+        <p>{{this.thesis.topic}}</p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  <div class="texts">
+    <p class="subtitle">Содержание:</p>
+    <p>{{this.thesis.content}}</p>
+  </div>
+</main>

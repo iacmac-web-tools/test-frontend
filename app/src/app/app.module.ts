@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AddThesesComponent } from './pages/add-theses/add-theses.component';
+import { DetailThesisComponent } from './pages/detail-thesis/detail-thesis.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule }   from '@angular/common/http';
@@ -23,6 +24,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     AppComponent,
     HomeComponent,
     AddThesesComponent,
+    DetailThesisComponent,
     NotFoundComponent
   ],
   imports: [

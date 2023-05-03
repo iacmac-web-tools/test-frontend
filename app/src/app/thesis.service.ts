@@ -12,6 +12,10 @@ export class ThesisService{
     return this.http.get<IBriefThesis[]>(this.url + '/all')
   }
   
+  getThesis(id: number){
+    return this.http.get<IOutputThesis>(this.url + '/' + id)
+  }
+  
   createThesis(thesis: IOutputThesis){
     const headers = new HttpHeaders().set("Content-Type", "application/json");
     return this.http.post<IOutputThesis>(this.url, JSON.stringify(thesis), {headers}); 
