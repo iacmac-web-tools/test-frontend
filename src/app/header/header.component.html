@@ -1,0 +1,16 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <div class="container-fluid">
+    <a href="/" class="navbar-brand">{{environment.brandName}}</a>
+    <button (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed" class="navbar-toggler" type="button"
+            aria-controls="navbarNav" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="collapse navbar-collapse">
+      <ul ngbNav class="navbar-nav" [activeId]="route.fragment | async">
+        <li *ngFor="let link of links" [ngbNavItem]="link.fragment" class="nav-item">
+          <a ngbNavLink [routerLink]="link.fragment" aria-current="page">{{link.title}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

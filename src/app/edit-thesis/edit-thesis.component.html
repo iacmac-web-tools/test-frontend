@@ -1,0 +1,91 @@
+<form class="container d-flex flex-column" [formGroup]="thesisForm" (ngSubmit)="submit()">
+  <p class="fs-3">Автор</p>
+  <div class="row justify-content-evenly">
+    <div class="col-3">
+      <label>Фамилия</label>
+      <input class="form-control" type="text" name="lastName" formControlName="lastName">
+      <app-field-error [control]="thesisForm.controls.lastName">Фамилия не должна быть пустой</app-field-error>
+    </div>
+    <div class="col-3">
+      <label>Имя</label>
+      <input class="form-control" type="text" name="firstName" formControlName="firstName">
+      <app-field-error [control]="thesisForm.controls.firstName">Имя не должно быть пустым</app-field-error>
+    </div>
+    <div class="col-3">
+      <label>Отчество</label>
+      <input class="form-control" type="text" name="middleName" formControlName="middleName">
+    </div>
+    <div class="col-3">
+      <label>Email</label>
+      <input class="form-control" type="email" name="contactEmail" formControlName="contactEmail">
+      <app-field-error [control]="thesisForm.controls.contactEmail">Неверный email</app-field-error>
+    </div>
+  </div>
+  <div class="row justify-content-evenly mt-3">
+    <div class="col-12">
+      <label>Место работы</label>
+      <input class="form-control" type="text" name="workplace" formControlName="workplace">
+      <app-field-error [control]="thesisForm.controls.workplace">Место работы не должно быть пустым</app-field-error>
+    </div>
+  </div>
+
+  <div class="row justify-content-around align-items-center mt-3">
+    <div class="col-6">
+      <p class="fs-3">Другие авторы</p>
+    </div>
+    <div class="col-3 offset-3 col-sm-3 offset-sm-3">
+      <button type="button" class="btn btn-primary" (click)="addOtherAuthor()">Добавить</button>
+    </div>
+  </div>
+
+  <div *ngFor="let author of thesisForm.controls.otherAuthors.controls; let i = index" formArrayName="otherAuthors"
+       class="row justify-content-evenly">
+    <div class="col-3">
+      <label>Фамилия</label>
+      <input class="form-control" type="text" name="lastName" [formControl]="author.controls.lastName">
+      <app-field-error [control]="author.controls.lastName">Фамилия не должна быть пустой</app-field-error>
+    </div>
+    <div class="col-3">
+      <label>Имя</label>
+      <input class="form-control" type="text" name="firstName" [formControl]="author.controls.firstName">
+      <app-field-error [control]="author.controls.firstName">Имя не должно быть пустым</app-field-error>
+    </div>
+    <div class="col-3">
+      <label>Отчество</label>
+      <input class="form-control" type="text" name="middleName" [formControl]="author.controls.middleName">
+    </div>
+    <div class="col-3"
+         [ngClass]="isControlsInvalidAndTouched([author.controls.lastName, author.controls.firstName])
+         ? 'align-self-center'
+         : 'align-self-end'">
+      <button type="button" class="btn btn-danger" (click)="removeOtherAuthor(i)">Удалить</button>
+    </div>
+  </div>
+
+  <p class="fs-3">Тезис</p>
+  <div class="row justify-content-evenly">
+    <div class="col-12">
+      <label>Тема</label>
+      <input class="form-control" type="text" name="topic" formControlName="topic">
+      <app-field-error [control]="thesisForm.controls.topic">Тема не должна быть пустой</app-field-error>
+    </div>
+  </div>
+  <div class="row justify-content-evenly mt-3">
+    <div class="col-12">
+      <label>Содержание</label>
+      <textarea class="form-control" type="text" rows="5" name="content" formControlName="content"></textarea>
+      <app-field-error [control]="thesisForm.controls.content">Содержание не должно быть пустым</app-field-error>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-6 col-sm-4 col-md-2">
+      <button class="btn btn-primary w-100" [disabled]="thesisForm.invalid"
+              type="submit">{{primaryButtonText}}</button>
+    </div>
+    <div class="col-6 col-sm-6 col-md-4">
+      <button class="btn btn-secondary w-100" type="reset" (click)="resetForm()">Очистить форму</button>
+    </div>
+  </div>
+
+</form>
