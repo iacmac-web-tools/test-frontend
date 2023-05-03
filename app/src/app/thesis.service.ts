@@ -9,11 +9,11 @@ export class ThesisService {
   constructor(private http: HttpClient) {}
 
   getThesesAll() {
-    return this.http.get<IBriefThesis[]>(this.url + '/all');
+    return this.http.get<IBriefThesis[]>(`${this.url}/all`);
   }
 
   getThesis(id: number) {
-    return this.http.get<IOutputThesis>(this.url + '/' + id);
+    return this.http.get<IOutputThesis>(`${this.url}/${id}`);
   }
 
   addThesis(thesis: IOutputThesis) {
@@ -26,13 +26,13 @@ export class ThesisService {
   updateThesis(id: number, thesis: IOutputThesis) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.put<IOutputThesis>(
-      this.url + '/' + id,
+      `${this.url}/${id}`,
       JSON.stringify(thesis),
       { headers }
     );
   }
 
   delThesis(id: number) {
-    return this.http.delete(this.url + '/' + id);
+    return this.http.delete(`${this.url}/${id}`);
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ThesisService } from 'src/app/thesis.service';
-import { IAuthor } from 'src/types/thesis';
+import transformForm from 'src/utils/transform-form';
 
 @Component({
   selector: 'app-add-theses',
@@ -15,10 +15,6 @@ export class AddThesesComponent implements OnInit {
 
   formGroup: FormGroup = new FormGroup({});
   otherAuthors: FormGroup[] = [];
-  error = {
-    status: '',
-    message: '',
-  };
 
   constructor(
     private _snackBar: MatSnackBar,
@@ -64,47 +60,16 @@ export class AddThesesComponent implements OnInit {
   }
 
   addThesis(form: FormGroup) {
-    const {
-      firstName,
-      middleName,
-      lastName,
-      contactEmail,
-      workplace,
-      otherAuthors,
-      topic,
-      content,
-    } = form.value;
-
-    const pipeOtherAuthors = otherAuthors.map((otherAuthor: IAuthor) => ({
-      ...otherAuthor,
-      ...{ workplace },
-    }));
-
-    const pipeFormValue = {
-      mainAuthor: {
-        firstName,
-        lastName,
-        middleName,
-        workplace,
-      },
-      contactEmail,
-      otherAuthors: pipeOtherAuthors,
-      topic,
-      content,
-    };
-
-    this.thesisService.addThesis(pipeFormValue).subscribe({
+    this.thesisService.addThesis(transformForm(form.value, true)).subscribe({
       next: () => {
         this.ngForm?.resetForm();
         this._snackBar.open('Добавлено!', 'close');
       },
       error: data => {
-        this.error = {
-          status: data.error.status,
-          message: (Object.values(data.error.errors)[0] as string[])[0],
-        };
         this._snackBar.open(
-          `${this.error.status} ${this.error.message}`,
+          `${data.error.status} ${
+            (Object.values(data.error.errors)[0] as string[])[0]
+          }`,
           'close'
         );
       },

@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ThesisService } from 'src/app/thesis.service';
 import { IOutputThesis } from 'src/types/thesis';
+import transformForm from 'src/utils/transform-form';
 
 @Component({
   selector: 'app-detail-thesis',
@@ -27,11 +28,7 @@ export class DetailThesisComponent implements OnInit {
   };
   isLoading = true;
   isEdited = false;
-  id = 0;
-  error = {
-    status: '',
-    message: '',
-  };
+  id: number;
 
   constructor(
     private _snackBar: MatSnackBar,
@@ -47,6 +44,7 @@ export class DetailThesisComponent implements OnInit {
     this.thesisService.getThesis(this.id).subscribe({
       next: (data: IOutputThesis) => {
         this.thesis = data;
+
         data.otherAuthors.forEach(otherAuthor => {
           this.otherAuthors.push(
             this.formBuilder.group({
@@ -57,6 +55,7 @@ export class DetailThesisComponent implements OnInit {
             })
           );
         });
+
         this.formGroup = this.formBuilder.group({
           firstName: [data.mainAuthor.firstName, Validators.required],
           middleName: [data.mainAuthor.middleName, Validators.required],
@@ -70,6 +69,7 @@ export class DetailThesisComponent implements OnInit {
           content: [data.content, Validators.required],
           otherAuthors: this.formBuilder.array(this.otherAuthors),
         });
+
         this.isLoading = false;
       },
       error: () => {
@@ -87,46 +87,22 @@ export class DetailThesisComponent implements OnInit {
   }
 
   saveEditThesis(form: FormGroup) {
-    const {
-      firstName,
-      middleName,
-      lastName,
-      contactEmail,
-      workplace,
-      otherAuthors,
-      topic,
-      content,
-    } = form.value;
-
-    const pipeFormValue = {
-      mainAuthor: {
-        firstName,
-        lastName,
-        middleName,
-        workplace,
-      },
-      contactEmail,
-      otherAuthors,
-      topic,
-      content,
-    };
-
-    this.thesisService.updateThesis(this.id, pipeFormValue).subscribe({
-      next: (data: IOutputThesis) => {
-        this.thesis = data;
-        this.isEdited = false;
-      },
-      error: data => {
-        this.error = {
-          status: data.error.status,
-          message: (Object.values(data.error.errors)[0] as string[])[0],
-        };
-        this._snackBar.open(
-          `${this.error.status} ${this.error.message}`,
-          'close'
-        );
-      },
-    });
+    this.thesisService
+      .updateThesis(this.id, transformForm(form.value))
+      .subscribe({
+        next: (data: IOutputThesis) => {
+          this.thesis = data;
+          this.isEdited = false;
+        },
+        error: data => {
+          this._snackBar.open(
+            `${data.error.status} ${
+              (Object.values(data.error.errors)[0] as string[])[0]
+            }`,
+            'close'
+          );
+        },
+      });
   }
 
   delThesis() {
@@ -135,12 +111,10 @@ export class DetailThesisComponent implements OnInit {
         this.router.navigate(['']);
       },
       error: data => {
-        this.error = {
-          status: data.error.status,
-          message: (Object.values(data.error.errors)[0] as string[])[0],
-        };
         this._snackBar.open(
-          `${this.error.status} ${this.error.message}`,
+          `${data.error.status} ${
+            (Object.values(data.error.errors)[0] as string[])[0]
+          }`,
           'close'
         );
       },
