@@ -1,7 +1,29 @@
-.root {
+:host {
+  display: flex;
+  flex-direction: column;
   max-width: 1440px;
+  width: 100%;
+  height: 100vh;
   margin: 0 auto;
+}
+
+.root {
+  height: 100%;
   padding: 20px;
+}
+
+.spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+}
+
+.title,
+.mat-mdc-form-field {
+  width: 99.9%;
 }
 
 .title,
@@ -11,4 +33,13 @@
 
 .subtitle {
   font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  padding: 40px 0;
+
+  & .mdc-button:not(:last-child) {
+    margin-right: 20px;
+  }
 }

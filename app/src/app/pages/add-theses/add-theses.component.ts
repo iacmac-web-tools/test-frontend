@@ -74,7 +74,7 @@ export class AddThesesComponent implements OnInit {
       content,
     }
     
-    this.thesisService.createThesis(pipeFormValue).subscribe({
+    this.thesisService.addThesis(pipeFormValue).subscribe({
       next: (data: IOutputThesis) => {
         this.ngForm?.resetForm();
       },

@@ -1,6 +1,6 @@
 <main class="root">
   <form class="form" [formGroup]="formGroup" (ngSubmit)="addThesis(formGroup)" #ngForm="ngForm">
-    <mat-grid-list cols="4" rowHeight="90px" gutterSize="20px">
+    <mat-grid-list cols="4" rowHeight="110px" gutterSize="20px">
       <mat-grid-tile colspan=4 rowspan=1>
         <h2 class="title">Автор</h2>
       </mat-grid-tile>
@@ -69,7 +69,7 @@
           <mat-form-field appearance="outline" formGroupName={{i}}>
             <mat-label>Фамилия</mat-label>
             <input matInput formControlName="firstName">
-            <mat-error *ngIf="formGroup.controls['firstName'].hasError('required')">
+            <mat-error *ngIf="otherAuthor.controls['firstName'].hasError('required')">
               Пожалуйста, заполните это поле
             </mat-error>
           </mat-form-field>
@@ -78,7 +78,7 @@
           <mat-form-field appearance="outline" formGroupName={{i}}>
             <mat-label>Имя</mat-label>
             <input matInput formControlName="middleName">
-            <mat-error *ngIf="formGroup.controls['middleName'].hasError('required')">
+            <mat-error *ngIf="otherAuthor.controls['middleName'].hasError('required')">
               Пожалуйста, заполните это поле
             </mat-error>
           </mat-form-field>
@@ -87,7 +87,7 @@
           <mat-form-field appearance="outline" formGroupName={{i}}>
             <mat-label>Отечество</mat-label>
             <input matInput formControlName="lastName">
-            <mat-error *ngIf="formGroup.controls['lastName'].hasError('required')">
+            <mat-error *ngIf="otherAuthor.controls['lastName'].hasError('required')">
               Пожалуйста, заполните это поле
             </mat-error>
           </mat-form-field>

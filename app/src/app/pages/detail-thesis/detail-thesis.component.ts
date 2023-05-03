@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ThesisService } from 'src/app/thesis.service';
 import { IOutputThesis } from 'src/types/thesis';
 
@@ -9,6 +10,8 @@ import { IOutputThesis } from 'src/types/thesis';
   styleUrls: ['./detail-thesis.component.scss']
 })
 export class DetailThesisComponent implements OnInit {
+  formGroup: FormGroup = new FormGroup({});
+  otherAuthors: FormGroup[] = [];
   thesis: IOutputThesis = {
     mainAuthor: {
       firstName: '',
@@ -22,13 +25,15 @@ export class DetailThesisComponent implements OnInit {
     content: '',
   }
   isLoading = true;
+  isEdited = false;
   id: number = 0
   error = {
     status: '',
     message: ''
   };
 
-  constructor(private activateRoute: ActivatedRoute, private thesisService: ThesisService) {
+
+  constructor(private formBuilder: FormBuilder, private activateRoute: ActivatedRoute, private router: Router, private thesisService: ThesisService) {
     this.id = activateRoute.snapshot.params['id'];
   }
 
@@ -36,6 +41,24 @@ export class DetailThesisComponent implements OnInit {
     this.thesisService.getThesis(this.id).subscribe({
       next: (data: IOutputThesis) => {
         this.thesis = data;
+        data.otherAuthors.forEach(otherAuthor => {
+          this.otherAuthors.push(this.formBuilder.group({
+            firstName: [otherAuthor?.firstName, Validators.required],
+            middleName: [otherAuthor?.middleName, Validators.required],
+            lastName: [otherAuthor?.lastName, Validators.required],
+            workplace: [otherAuthor?.workplace, Validators.required],
+          }));
+        });
+        this.formGroup = this.formBuilder.group({
+          firstName: [data.mainAuthor.firstName, Validators.required],
+          middleName: [data.mainAuthor.middleName, Validators.required],
+          lastName: [data.mainAuthor.lastName, Validators.required],
+          contactEmail: [data.contactEmail, [Validators.required, Validators.email]],
+          workplace: [data.mainAuthor.workplace, Validators.required],
+          topic: [data.topic, Validators.required],
+          content: [data.content, Validators.required],
+          otherAuthors: this.formBuilder.array(this.otherAuthors),
+        });
         this.isLoading = false;
       },
       error: (data) => {
@@ -44,6 +67,58 @@ export class DetailThesisComponent implements OnInit {
           message: (Object.values(data.error.errors)[0] as string[])[0],
         };
         this.isLoading = false;
+      },
+    });
+  }
+
+  editThesis() {
+    this.isEdited = true
+  }
+  
+  cancelEditThesis() {
+    this.isEdited = false
+  }
+
+  saveEditThesis(form: FormGroup) {
+    const {firstName, middleName, lastName, contactEmail, workplace, otherAuthors, topic, content} = form.value;
+
+    const pipeFormValue = {
+      mainAuthor: {
+        firstName,
+        lastName,
+        middleName,
+        workplace,
+      },
+      contactEmail,
+      otherAuthors,
+      topic,
+      content,
+    }
+    
+    this.thesisService.updateThesis(this.id, pipeFormValue).subscribe({
+      next: (data: IOutputThesis) => {
+        this.thesis = data;
+        this.isEdited = false
+      },
+      error: (data) => {
+        this.error = {
+          status: data.error.status,
+          message: (Object.values(data.error.errors)[0] as string[])[0],
+        };
+      },
+    });
+  }
+  
+  delThesis() {
+    this.thesisService.delThesis(this.id).subscribe({
+      next: () => {
+        this.router.navigate(['']); 
+      },
+      error: (data) => {
+        this.error = {
+          status: data.error.status,
+          message: (Object.values(data.error.errors)[0] as string[])[0],
+        };
       },
     });
   }

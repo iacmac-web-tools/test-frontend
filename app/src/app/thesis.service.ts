@@ -16,8 +16,17 @@ export class ThesisService{
     return this.http.get<IOutputThesis>(this.url + '/' + id)
   }
   
-  createThesis(thesis: IOutputThesis){
+  addThesis(thesis: IOutputThesis){
     const headers = new HttpHeaders().set("Content-Type", "application/json");
     return this.http.post<IOutputThesis>(this.url, JSON.stringify(thesis), {headers}); 
+  }
+
+  updateThesis(id: number, thesis: IOutputThesis) {
+    const headers = new HttpHeaders().set("Content-Type", "application/json");
+    return this.http.put<IOutputThesis>(this.url + '/' + id, JSON.stringify(thesis), {headers});
+  }
+
+  delThesis(id: number){
+    return this.http.delete(this.url + '/' + id);
   }
 }
