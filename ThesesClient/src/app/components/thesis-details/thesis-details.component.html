@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-card class="theses-card">
+    <mat-card-header>
+      <mat-card-title>Topic: {{thesis.topic}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Content: {{thesis.content}}</p>
+      <p>Main Author:</p>
+      <p>
+        Firstname: {{thesis.mainAuthor.firstName}}
+        Lastname: {{thesis.mainAuthor.lastName}}
+        Middlename: {{thesis.mainAuthor.middleName}}
+        Workplace: {{thesis.mainAuthor.workplace}}
+      </p>
+      <p>Contact email: {{thesis.contactEmail}}</p>
+      <p>Other Authors:</p>
+      <p *ngFor="let author of thesis.otherAuthors">Author:
+        Firstname: {{author.firstName}}
+        Lastname: {{author.lastName}}
+        Middlename: {{author.middleName}}
+        Workplace: {{author.workplace}}
+      </p>
+      <p>Created: {{thesis.created}}</p>
+      <p>Updated: {{thesis.updated}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
