@@ -1,0 +1,28 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="example-spacer"></span>
+      <button class="button" mat-flat-button color="accent" (click)="openDialog()">Добавить тезис</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+  <mat-card class="theses-card" *ngFor="let thesis of theses">
+    <mat-card-header>
+      <mat-card-title>Main author: {{thesis.mainAuthor}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Topic: {{thesis.topic}}</p>
+      <p>Contact email: {{thesis.contactEmail}}</p>
+      <p>Created: {{thesis.created}}</p>
+      <p>Updated: {{thesis.updated}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="button" mat-flat-button color="primary"
+              [routerLink]="['/theses/', thesis.id]">Подробнее</button>
+      <button class="button" mat-flat-button color="primary"
+              [routerLink]="['/theses/update', thesis.id]" (click)="openDialog(thesis)">Изменить</button>
+      <button class="button" mat-flat-button color="primary" (click)="deleteThesis(thesis.id)">Удалить</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

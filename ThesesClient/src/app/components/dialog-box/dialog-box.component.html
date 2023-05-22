@@ -1,0 +1,40 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Topic</mat-label>
+    <input matInput formControlName="topic">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Content</mat-label>
+    <input matInput formControlName="content">
+  </mat-form-field>
+  <p style="margin-left: 15px">Main author</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Firstname</mat-label>
+    <input matInput formControlName="firstName">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Lastname</mat-label>
+    <input matInput formControlName="lastName">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Middlename</mat-label>
+    <input matInput formControlName="middleName">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Workplace</mat-label>
+    <input matInput formControlName="workplace">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Contact email</mat-label>
+    <input matInput formControlName="contactEmail">
+  </mat-form-field>
+  <p style="margin-left: 15px">Other authors</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Other authors</mat-label>
+    <input matInput formControlName="otherAuthors">
+  </mat-form-field>
+
+  <button class="button" mat-flat-button style="margin: 4px" color="primary"
+          type="submit">{{isNew ? 'Добавить' : 'Обновить'}}</button>
+  <button class="button" mat-flat-button color="primary" (click)="onNoClick()" type="button">Отмена</button>
+</form>
