@@ -6,11 +6,11 @@ import { DetailThesisComponent } from './pages/detail-thesis/detail-thesis.compo
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'addTheses', component: AddThesesComponent },
-  { path: 'notFound', component: NotFoundComponent },
-  { path: ':id', component: DetailThesisComponent },
-  { path: '**', component: NotFoundComponent },
+  { path: '/test-frontend/', component: HomeComponent },
+  { path: '/test-frontend/addTheses', component: AddThesesComponent },
+  { path: '/test-frontend/notFound', component: NotFoundComponent },
+  { path: '/test-frontend/:id', component: DetailThesisComponent },
+  { path: '/test-frontend/**', component: NotFoundComponent },
 ];
 
 @NgModule({
