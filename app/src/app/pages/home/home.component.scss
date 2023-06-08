@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  max-width: 1472px;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.root {
+  height: 100%;
+}
+
+.spinner,
+.notTheses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100%;
+}
+
+.mdc-list-item {
+  padding: 16px;
+}
+
+.mat-mdc-list-item-line {
+  font-size: 11px;
+}

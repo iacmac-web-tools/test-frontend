@@ -1,0 +1,26 @@
+<main class="root">
+  <div *ngIf="isLoading" class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <h1 *ngIf="!isLoading && !theses.length && !error.message" class="notTheses">
+    Пусто!
+  </h1>
+
+  <mat-nav-list *ngIf="!isLoading && theses.length && !error.message">
+    <a
+      mat-list-item
+      *ngFor="let thesis of theses; let i = index"
+      href="{{ thesis.id }}">
+      <span matListItemTitle>{{ i + 1 }}. Тема: {{ thesis.topic }}</span>
+      <span matListItemLine>Автор: {{ thesis.mainAuthor }}</span>
+      <span matListItemLine>Почта: {{ thesis.contactEmail }}</span>
+      <span matListItemLine
+        >Дата создания: {{ thesis.created | date : 'd/M/yy, H:mm' }}</span
+      >
+      <span matListItemLine
+        >Дата обновления: {{ thesis.updated | date : 'd/M/yy, H:mm' }}</span
+      >
+    </a>
+  </mat-nav-list>
+</main>
