@@ -1,0 +1,57 @@
+<div>
+    <h1>Автор</h1>
+  </div>
+  
+  <div class="col=xs=12">
+    <form #myForm="ngForm" (ngSubmit)="submitForm()">
+      <div class="input-group mb-3" >
+        <input type="email" class="form-control" name="Famaly"  placeholder="Имя" [(ngModel)]="Famaly">
+        <input type="email" class="form-control" name="Name"  placeholder="Имя" [(ngModel)]="Name">
+        <input type="email" class="form-control" name="Name2"  placeholder="Отчество" [(ngModel)]="Name2">
+        <input type="email" class="form-control" name="Email"  placeholder="Контактный Email" [(ngModel)]="Email">
+      </div>
+  
+      <div class="mb-3">
+        <input type="email" class="form-control" name="MesRab" placeholder="Место работы" [(ngModel)]="MesRab">
+      </div>
+  
+      <div class="input-group mb-3">
+        <h1>Другие авторы</h1>
+        <div class="position-absolute top-0 end-0">
+          <button type="button" class="btn btn-primary" (click)="addDop()" >Добавить</button>
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <h1>Тезис</h1>
+        <input type="email" class="form-control" name="Tema" placeholder="Тема" [(ngModel)]="Tema">
+      </div>
+  
+      <div class="mb-3">
+        <textarea class="form-control" name="Soderj" placeholder="Содержание" rows="5" [(ngModel)]="Soderj"></textarea>
+      </div>
+  
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="Third group">
+          <button type="button" class="btn btn-primary" (click)="addItem(Famaly, Name, Name2, Email, MesRab, Tema, Soderj)">Отправить</button>
+        </div>
+  
+        <div class="btn-group" role="group" aria-label="Third group">
+          <button type="button" class="btn btn-light" (click)="myForm.reset()">Очистить</button>
+        </div>
+      </div>
+  
+      <div><h3>Добавленные элементы</h3>
+        <ul>
+          <li *ngFor="let item of item">
+            {{item.Famaly}}
+            {{item.Name}}
+            {{item.Name2}}
+            {{item.Email}}
+            {{item.Tema}}
+            {{item.Soderj}}
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
