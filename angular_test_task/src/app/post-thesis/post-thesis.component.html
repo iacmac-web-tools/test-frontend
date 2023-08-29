@@ -1,0 +1,188 @@
+<div class="container">
+  <div class="row">
+    <h2 class="text-start">Автор</h2>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="last_name" class="form-label">Фамилия</label>
+          <input type="text" class="form-control" id="last_name" name="last" [(ngModel)]="last_name">
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="first_name" class="form-label">Имя</label>
+          <input type="text" class="form-control" id="first_name" name="first" [(ngModel)]="first_name">
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="father_name" class="form-label">Отчество</label>
+          <input type="text" class="form-control" id="father_name" name="father" [(ngModel)]="father_name">
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="Email" class="form-label">Контактный email</label>
+          <input type="email" class="form-control" id="Email" name="mail" [(ngModel)]="Email">
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="job" class="form-label">Место работы</label>
+          <input type="text" class="form-control" id="job" name="job" [(ngModel)]="job">
+        </div>
+      </form>
+      <div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-start">Другие авторы</h2>
+    </div>
+    <div class="col text-end">
+      <button type="button" class="btn btn-primary">Добавить</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="last_name_otherAuthor" class="form-label">Фамилия</label>
+          <input type="text" class="form-control" id="last_name_otherAuthor" name="last_otherAuthor"
+                 [(ngModel)]="last_name_otherAuthor">
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="first_name_otherAuthor" class="form-label">Имя</label>
+          <input type="text" class="form-control" id="first_name_otherAuthor" name="first_otherAuthor"
+                 [(ngModel)]="first_name_otherAuthor">
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="father_name_otherAuthor" class="form-label">Отчество</label>
+          <input type="text" class="form-control" id="father_name_otherAuthor" name="father_otherAuthor"
+                 [(ngModel)]="father_name_otherAuthor">
+        </div>
+      </form>
+    </div>
+    <div class="col text-end">
+      <button type="button" class="btn btn-danger btn_Margin">Удалить</button>
+    </div>
+
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="last_name_otherAuthor_2" class="form-label">Фамилия</label>
+          <input type="text" class="form-control" id="last_name_otherAuthor_2" name="last_otherAuthor_2"
+                 [(ngModel)]="last_name_otherAuthor_2">
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="first_name_otherAuthor_2" class="form-label">Имя</label>
+          <input type="text" class="form-control" id="first_name_otherAuthor_2" name="first_otherAuthor_2"
+                 [(ngModel)]="first_name_otherAuthor_2">
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="father_name_otherAuthor_2" class="form-label">Отчество</label>
+          <input type="text" class="form-control" id="father_name_otherAuthor_2" name="father_otherAuthor"
+                 [(ngModel)]="father_name_otherAuthor_2">
+        </div>
+      </form>
+    </div>
+    <div class="col text-end">
+      <button type="button" class="btn btn-danger btn_Margin">Удалить</button>
+    </div>
+
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <h2 class="text-start">Тезис</h2>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form>
+        <div class="mb-3">
+          <label for="theme" class="form-label">Тема</label>
+          <input type="text" class="form-control" id="theme" name="theme" [(ngModel)]="theme">
+        </div>
+      </form>
+      <div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="mb-3">
+        <label for="description" class="form-label">Содержание</label>
+        <textarea class="form-control" id="description" rows="3" name="desc"
+                  [(ngModel)]="description"></textarea>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-primary" (click)="addThesis()">Отправить</button>
+      <button type="button" class="btn btn-light ms-5" (click)="clearText()">Очистить форму</button>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container" *ngIf="error">
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{error}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+

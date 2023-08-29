@@ -1,0 +1,289 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p class="text-center">Полный список тезисов</p>
+    </div>
+  </div>
+</div>
+<div class="container d-flex justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Автор</th>
+          <th scope="col">Название</th>
+          <th scope="col">Email</th>
+          <th scope="col">Полная информация</th>
+          <th scope="col">Изменить</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let thesis of Theses">
+        <tr>
+          <td>{{thesis.id}}</td>
+          <td>{{thesis.mainAuthor}}</td>
+          <td>{{thesis.topic}}</td>
+          <td>{{thesis.contactEmail}}</td>
+          <td><!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" (click)="ShowMoreInfo(thesis.id)">
+              Показать
+            </button>
+          </td>
+          <td>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModalMore" (click)="ShowEditInfo(thesis.id)">
+              Изменить
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Дополнительная информация</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">ID:</li>
+                <li class="list-group-item">{{fullInfoThesis.id}}</li>
+              </ul>
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">Фамилия главного автора:</li>
+                <li class="list-group-item">{{fullInfoThesis.mainAuthor?.lastName}}</li>
+              </ul>
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">Имя главного автора:</li>
+                <li class="list-group-item">{{fullInfoThesis.mainAuthor?.firstName}}</li>
+              </ul>
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">Отчество главного автора:</li>
+                <li class="list-group-item">{{fullInfoThesis.mainAuthor?.middleName}}</li>
+              </ul>
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">Место работы главного автора:</li>
+                <li class="list-group-item">{{fullInfoThesis.mainAuthor?.workplace}}</li>
+              </ul>
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">Емаил главного автора:</li>
+                <li class="list-group-item">{{fullInfoThesis.contactEmail}}</li>
+              </ul>
+              <ul class="list-group list-group-horizontal"
+                  *ngFor="let info of fullInfoThesis?.otherAuthors">
+                <li class="list-group-item">ФИО других авторов:</li>
+                <li class="list-group-item">{{info.lastName}}  {{info.firstName}}
+                  {{info.middleName}}</li>
+              </ul>
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">Тема</li>
+                <li class="list-group-item">{{fullInfoThesis.topic}}</li>
+              </ul>
+              <ul class="list-group list-group-horizontal">
+                <li class="list-group-item">Содержание</li>
+                <li class="list-group-item">{{fullInfoThesis.content}}</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalMore" tabindex="-1" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabelMore">Изменить данные</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row">
+                  <h2 class="text-start">Автор</h2>
+                </div>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <form>
+                      <div class="mb-3">
+                        <label for="last_name" class="form-label">Фамилия</label>
+                        <input type="text" class="form-control" id="last_name" name="last"
+                               [(ngModel)]="last_name">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col">
+                    <form>
+                      <div class="mb-3">
+                        <label for="first_name" class="form-label">Имя</label>
+                        <input type="text" class="form-control" id="first_name" name="first"
+                               [(ngModel)]="first_name">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col">
+                    <form>
+                      <div class="mb-3">
+                        <label for="father_name" class="form-label">Отчество</label>
+                        <input type="text" class="form-control" id="father_name" name="father"
+                               [(ngModel)]="father_name">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col">
+                    <form>
+                      <div class="mb-3">
+                        <label for="Email" class="form-label">Контактный email</label>
+                        <input type="email" class="form-control" id="Email" name="mail"
+                               [(ngModel)]="Email">
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <form>
+                      <div class="mb-3">
+                        <label for="job" class="form-label">Место работы</label>
+                        <input type="text" class="form-control" id="job" name="job"
+                               [(ngModel)]="job">
+                      </div>
+                    </form>
+                    <div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <h2 class="text-start">Другие авторы</h2>
+                  </div>
+                  <div class="col text-end">
+                    <button type="button" class="btn btn-primary">Добавить</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <form>
+                      <div class="mb-3">
+                        <label for="last_name_otherAuthor" class="form-label">Фамилия</label>
+                        <input type="text" class="form-control" id="last_name_otherAuthor"
+                               name="last_otherAuthor"
+                               [(ngModel)]="last_name_otherAuthor">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col">
+                    <form>
+                      <div class="mb-3">
+                        <label for="first_name_otherAuthor" class="form-label">Имя</label>
+                        <input type="text" class="form-control" id="first_name_otherAuthor"
+                               name="first_otherAuthor"
+                               [(ngModel)]="first_name_otherAuthor">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col">
+                    <form>
+                      <div class="mb-3">
+                        <label for="father_name_otherAuthor" class="form-label">Отчество</label>
+                        <input type="text" class="form-control" id="father_name_otherAuthor"
+                               name="father_otherAuthor"
+                               [(ngModel)]="father_name_otherAuthor">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col text-end">
+                    <button type="button" class="btn btn-danger btn_Margin">Удалить</button>
+                  </div>
+
+                </div>
+              </div>
+
+              <br>
+              <div class="container">
+                <div class="row">
+                  <h2 class="text-start">Тезис</h2>
+                </div>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <form>
+                      <div class="mb-3">
+                        <label for="theme" class="form-label">Тема</label>
+                        <input type="text" class="form-control" id="theme" name="theme"
+                               [(ngModel)]="theme">
+                      </div>
+                    </form>
+                    <div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="mb-3">
+                      <label for="description" class="form-label">Содержание</label>
+                      <textarea class="form-control" id="description" rows="3" name="desc"
+                                [(ngModel)]="description"></textarea>
+                    </div>
+                    <div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <button type="button" class="btn btn-primary" (click)="EditInfo()">Отправить
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <br>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
