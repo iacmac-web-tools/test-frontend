@@ -12,12 +12,11 @@ https://conf.antibiotic.ru/demo/swagger/index.html
 framework for design:Bootstrap
 
 Completed tasks:
-- Adding a new thesis
-- Viewing the list of theses added through the form
+- Adding a new thesis ("http://localhost:4200/postThesis")
+- Viewing the list of theses added through the form ("http://localhost:4200/allThesis")
 - Viewing detailed information about one added thesis
 - Editing information about one added thesis
 - Send error display
-
 
 ### Form Example
 
