@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+.form-label {
+  color:  	#808080;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.btn_Margin {
+  margin-top: 1.7rem;
+}
+#description {
+  resize: none;
+}

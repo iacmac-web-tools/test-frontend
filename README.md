@@ -1,32 +1,23 @@
 # Angular Test Task
 
-## Порядок выполнения
 
-1. Форкнуть репозиторий
-2. Добавить CONTRIBUTORS.md со своими ФИО и email
-3. Сделать задание
-4. Сделать pull-request к данному репозиторию
+## Task
 
-## Задание
+Make an Angular web application for adding and viewing theses using an external API.
 
-Сделать веб-приложение на Angular для добавления и просмотра тезисов с использованием внешнего API.
 
-API доступно по ссылке:
-https://conf.antibiotic.ru/demo/api
-
-Интерфейс Swagger с примерами работы с API доступен по ссылке
+Swagger with examples of working with the API is available at the link
 https://conf.antibiotic.ru/demo/swagger/index.html
 
-Можно использовать любые фреймворки для оформления: Angular Material, PrimeNg, Bootstrap, Tailwind, и т.д.
+framework for design:Bootstrap
 
-По итогу приложение должно обеспечивать:
-- Добавление нового тезиса
-- Просмотр списка добавленных через форму тезисов
-- Просмотр подробной информации об одном добавленном тезисе
-- Редактирование информации об одном добавленном тезисе
-- Если при отправке формы на сервер возникла ошибка, то она должна отображаться на экране.
+Completed tasks:
+- Adding a new thesis ("http://localhost:4200/postThesis")
+- Viewing the list of theses added through the form ("http://localhost:4200/allThesis")
+- Viewing detailed information about one added thesis
+- Editing information about one added thesis
+- Send error display
 
-
-### Пример формы заполнения
+### Form Example
 
 ![img](./preview.png)
